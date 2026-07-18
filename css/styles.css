@@ -1,0 +1,524 @@
+/* remotedevelopers — custom polish beyond Tailwind */
+
+:root {
+  --rd-navy: #0a2540;
+  --rd-navy-mid: #0f3558;
+  --rd-navy-light: #163a5c;
+  --rd-teal: #14b8a6;
+  --rd-cyan: #22d3ee;
+  --rd-surface: #0c2d4a;
+  --rd-surface-2: #123a5c;
+  --rd-border: rgba(34, 211, 238, 0.12);
+  --rd-text: #f0f7fc;
+  --rd-text-muted: #94a8bc;
+  --rd-glass: rgba(10, 37, 64, 0.72);
+  --rd-hero-glow: rgba(20, 184, 166, 0.18);
+  --rd-card-bg: rgba(15, 53, 88, 0.55);
+  --rd-input-bg: rgba(8, 28, 48, 0.8);
+  --rd-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+html.light {
+  --rd-navy: #f4f8fb;
+  --rd-navy-mid: #e8f0f7;
+  --rd-navy-light: #dce8f2;
+  --rd-surface: #ffffff;
+  --rd-surface-2: #f0f6fb;
+  --rd-border: rgba(10, 37, 64, 0.1);
+  --rd-text: #0a2540;
+  --rd-text-muted: #5a7088;
+  --rd-glass: rgba(255, 255, 255, 0.82);
+  --rd-hero-glow: rgba(20, 184, 166, 0.12);
+  --rd-card-bg: rgba(255, 255, 255, 0.9);
+  --rd-input-bg: #ffffff;
+  --rd-shadow: 0 8px 32px rgba(10, 37, 64, 0.08);
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--rd-navy);
+  color: var(--rd-text);
+  min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: "Sora", system-ui, sans-serif;
+}
+
+/* Glass nav */
+.nav-glass {
+  background: var(--rd-glass);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--rd-border);
+}
+
+/* Hero atmosphere */
+.hero-bg {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 20% 40%,
+      var(--rd-hero-glow),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 85% 20%,
+      rgba(34, 211, 238, 0.1),
+      transparent 55%
+    ),
+    linear-gradient(
+      165deg,
+      var(--rd-navy) 0%,
+      var(--rd-navy-mid) 45%,
+      var(--rd-navy) 100%
+    );
+}
+
+.hero-snippet {
+  position: absolute;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--rd-cyan);
+  opacity: 0.14;
+  pointer-events: none;
+  white-space: pre;
+  user-select: none;
+  animation: float-snippet 12s ease-in-out infinite;
+}
+
+.hero-snippet:nth-child(2) {
+  animation-delay: -4s;
+  opacity: 0.1;
+}
+
+.hero-snippet:nth-child(3) {
+  animation-delay: -8s;
+  opacity: 0.12;
+}
+
+@keyframes float-snippet {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+html.light .hero-snippet {
+  color: var(--rd-navy-mid);
+  opacity: 0.2;
+}
+
+/* Job cards */
+.job-card {
+  background: var(--rd-card-bg);
+  border: 1px solid var(--rd-border);
+  border-radius: 1rem;
+  box-shadow: var(--rd-shadow);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.35);
+  box-shadow: 0 12px 40px rgba(20, 184, 166, 0.12);
+}
+
+.badge-remote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(20, 184, 166, 0.15);
+  color: var(--rd-teal);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+}
+
+.badge-salary {
+  display: inline-flex;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(34, 211, 238, 0.12);
+  color: var(--rd-cyan);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+.badge-featured {
+  display: inline-flex;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--rd-teal), var(--rd-cyan));
+  color: #0a2540;
+}
+
+.tag-chip {
+  display: inline-flex;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: var(--rd-surface-2);
+  color: var(--rd-text-muted);
+  border: 1px solid var(--rd-border);
+}
+
+.tag-chip.active,
+button.tag-chip[aria-pressed="true"] {
+  background: rgba(20, 184, 166, 0.2);
+  color: var(--rd-teal);
+  border-color: rgba(20, 184, 166, 0.4);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, var(--rd-teal), #0d9488);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px rgba(20, 184, 166, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Keep Gumroad overlay links looking like our primary buttons */
+a.gumroad-button.btn-primary,
+a.btn-primary.gumroad-button {
+  background-image: linear-gradient(135deg, var(--rd-teal), #0d9488) !important;
+  background-color: transparent !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.75rem !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+a.gumroad-button.btn-primary::after,
+a.btn-primary.gumroad-button::after {
+  display: none !important;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: transparent;
+  color: var(--rd-text);
+  border: 1px solid var(--rd-border);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--rd-teal);
+  background: rgba(20, 184, 166, 0.08);
+}
+
+.btn-apply {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(20, 184, 166, 0.15);
+  color: var(--rd-teal);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  text-decoration: none;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-apply:hover {
+  background: rgba(20, 184, 166, 0.28);
+}
+
+.logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, var(--rd-navy-mid), var(--rd-surface-2));
+  border: 1px solid var(--rd-border);
+  color: var(--rd-cyan);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.35rem;
+  background: #fff;
+}
+
+.company-tile .logo-mark {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.875rem;
+}
+
+.company-tile .logo-mark img {
+  padding: 0.4rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--rd-border);
+  background: var(--rd-input-bg);
+  color: var(--rd-text);
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--rd-teal);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--rd-text);
+}
+
+.surface-panel {
+  background: var(--rd-card-bg);
+  border: 1px solid var(--rd-border);
+  border-radius: 1rem;
+}
+
+.text-muted {
+  color: var(--rd-text-muted);
+}
+
+.section-pad {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+}
+
+/* Theme toggle icon swap */
+.theme-icon-sun {
+  display: none;
+}
+html.light .theme-icon-moon {
+  display: none;
+}
+html.light .theme-icon-sun {
+  display: block;
+}
+
+/* Mobile filter drawer */
+.filter-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.filter-drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 1023px) {
+  .filter-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(20rem, 88vw);
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    overflow-y: auto;
+    background: var(--rd-navy);
+    border-right: 1px solid var(--rd-border);
+    padding: 1.25rem;
+  }
+
+  .filter-sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Fade-in for job list */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.35s ease forwards;
+}
+
+/* Company logo wall */
+.company-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--rd-border);
+  background: var(--rd-card-bg);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.company-tile:hover {
+  border-color: rgba(20, 184, 166, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Focus visible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--rd-teal);
+  outline-offset: 2px;
+}
+
+/* Job detail description (API HTML) */
+.job-description {
+  color: var(--rd-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.job-description p,
+.job-description ul,
+.job-description ol,
+.job-description div {
+  margin-bottom: 0.85rem;
+}
+
+.job-description ul,
+.job-description ol {
+  padding-left: 1.25rem;
+}
+
+.job-description li {
+  margin-bottom: 0.35rem;
+}
+
+.job-description strong,
+.job-description b {
+  color: var(--rd-text);
+  font-weight: 600;
+}
+
+.job-description a {
+  color: var(--rd-teal);
+  text-decoration: underline;
+}
+
+.job-description h1,
+.job-description h2,
+.job-description h3,
+.job-description h4 {
+  font-family: "Sora", system-ui, sans-serif;
+  color: var(--rd-text);
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.job-description h2 {
+  font-size: 1.25rem;
+}
+
+.blog-prose h2:first-child {
+  margin-top: 0;
+}
+

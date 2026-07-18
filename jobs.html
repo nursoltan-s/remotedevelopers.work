@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Browse Remote Developer Jobs — remotedevelopers</title>
+    <meta
+      name="description"
+      content="Filter remote developer jobs by salary, tech stack, experience, and role type. Featured curated listings plus jobs from partner boards."
+    />
+    <link rel="canonical" href="https://remotedevelopers/jobs.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://remotedevelopers/jobs.html" />
+    <meta property="og:title" content="Browse Remote Developer Jobs" />
+    <meta
+      property="og:description"
+      content="Filter remote developer jobs by salary, tech stack, experience, and role type."
+    />
+    <meta
+      property="og:image"
+      content="https://remotedevelopers/assets/og-image.svg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        if (localStorage.getItem("rd-theme") !== "dark")
+          document.documentElement.classList.add("light");
+      } catch (e) {
+        document.documentElement.classList.add("light");
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: { DEFAULT: "#0A2540", mid: "#0f3558", light: "#163a5c" },
+              accent: { teal: "#14B8A6", cyan: "#22D3EE" },
+            },
+            fontFamily: {
+              display: ["Sora", "system-ui", "sans-serif"],
+              sans: ["DM Sans", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body class="antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-accent-teal focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
+      >Skip to content</a
+    >
+
+    <header class="nav-glass sticky top-0 z-50">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="flex h-16 items-center justify-between gap-4">
+          <a href="/" class="flex items-center shrink-0">
+            <img
+              src="/assets/logo-nav.png"
+              alt="remotedevelopers.work"
+              class="h-8 sm:h-9 w-auto"
+              width="183"
+              height="40"
+            />
+          </a>
+          <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+            <a
+              href="/"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Home</a
+            >
+            <a
+              href="/jobs.html"
+              class="px-3 py-2 text-sm font-medium text-accent-cyan"
+              >Jobs</a
+            >
+            <a
+              href="/post-job.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Post a Job</a
+            >
+            <a
+              href="/companies.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Companies</a
+            >
+            <a
+              href="/blog.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Blog</a
+            >
+            <a
+              href="/about.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >About</a
+            >
+          </nav>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              data-theme-toggle
+              class="btn-secondary !p-2.5"
+              aria-label="Toggle dark and light mode"
+            >
+              <svg
+                class="theme-icon-moon h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.75"
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                />
+              </svg>
+              <svg
+                class="theme-icon-sun h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.75"
+                  d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            </button>
+            <a
+              href="/post-job.html"
+              class="btn-primary !py-2 !px-3 text-sm hidden sm:inline-flex"
+              target="_blank"
+              rel="noopener"
+              >Post a Job – $5</a
+            >
+            <button
+              type="button"
+              class="btn-secondary !p-2.5 lg:hidden"
+              data-mobile-menu
+              aria-expanded="false"
+              aria-controls="mobile-nav"
+              aria-label="Open menu"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <nav
+          id="mobile-nav"
+          data-mobile-nav
+          class="hidden lg:hidden pb-4 border-t border-[var(--rd-border)] pt-3"
+          aria-label="Mobile"
+        >
+          <div class="flex flex-col gap-1">
+            <a href="/" class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Home</a
+            >
+            <a
+              href="/jobs.html"
+              class="px-3 py-2.5 text-sm font-medium rounded-lg bg-accent-teal/10 text-accent-teal"
+              >Jobs</a
+            >
+            <a
+              href="/post-job.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Post a Job</a
+            >
+            <a
+              href="/companies.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Companies</a
+            >
+            <a
+              href="/blog.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Blog</a
+            >
+            <a
+              href="/about.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >About</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div
+      id="filter-overlay"
+      class="filter-drawer-overlay lg:hidden"
+      aria-hidden="true"
+    ></div>
+
+    <main id="main" class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
+      <div class="mb-8">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold">Remote jobs</h1>
+        <p class="text-muted mt-2">
+          Search and filter hand-curated roles plus partner listings
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 mb-6 lg:hidden">
+        <button
+          type="button"
+          id="open-filters"
+          class="btn-secondary !py-2 !px-4 text-sm"
+        >
+          Filters
+        </button>
+        <span data-results-count class="text-sm text-muted"></span>
+      </div>
+
+      <div class="lg:grid lg:grid-cols-[16rem_1fr] lg:gap-8 items-start">
+        <!-- Filters -->
+        <aside
+          id="filter-sidebar"
+          class="filter-sidebar lg:!static lg:!translate-x-0 lg:!w-auto lg:!p-0 lg:!border-0 lg:!bg-transparent lg:!overflow-visible"
+        >
+          <div class="flex items-center justify-between mb-4 lg:hidden">
+            <h2 class="font-display font-semibold">Filters</h2>
+            <button
+              type="button"
+              id="close-filters"
+              class="btn-secondary !p-2 text-sm"
+              aria-label="Close filters"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div class="surface-panel p-4 space-y-6 sticky top-24">
+            <div>
+              <label class="form-label" for="filter-search">Search</label>
+              <input
+                id="filter-search"
+                type="search"
+                class="form-input"
+                placeholder="Title, company, tech…"
+                autocomplete="off"
+              />
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="form-label mb-0">Min salary</span>
+                <span
+                  id="salary-label"
+                  class="text-xs text-accent-cyan font-semibold"
+                  >Any</span
+                >
+              </div>
+              <input
+                id="filter-salary"
+                type="range"
+                min="0"
+                max="200000"
+                step="10000"
+                value="0"
+                class="w-full accent-teal-500"
+              />
+              <div class="flex justify-between text-xs text-muted mt-1">
+                <span>$0</span><span>$200k+</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="form-label">Role type</p>
+              <div class="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-filter-type="Full-time"
+                  aria-pressed="false"
+                >
+                  Full-time
+                </button>
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-filter-type="Contract"
+                  aria-pressed="false"
+                >
+                  Contract
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <p class="form-label">Experience</p>
+              <div class="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-filter-level="Junior"
+                  aria-pressed="false"
+                >
+                  Junior
+                </button>
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-filter-level="Mid"
+                  aria-pressed="false"
+                >
+                  Mid
+                </button>
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-filter-level="Senior"
+                  aria-pressed="false"
+                >
+                  Senior
+                </button>
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-filter-level="Lead"
+                  aria-pressed="false"
+                >
+                  Lead
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <p class="form-label">Tech stack</p>
+              <div id="tag-filters" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div>
+              <p class="form-label">Source</p>
+              <div class="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-source-filter="all"
+                  aria-pressed="true"
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-source-filter="curated"
+                  aria-pressed="false"
+                >
+                  Curated
+                </button>
+                <button
+                  type="button"
+                  class="tag-chip cursor-pointer"
+                  data-source-filter="partner"
+                  aria-pressed="false"
+                >
+                  Partners
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              id="clear-filters"
+              class="btn-secondary w-full !py-2 text-sm"
+            >
+              Clear filters
+            </button>
+          </div>
+        </aside>
+
+        <!-- Results -->
+        <div>
+          <p
+            class="hidden lg:block text-sm text-muted mb-4"
+            data-results-count
+          ></p>
+
+          <section id="featured-jobs" class="mb-10">
+            <h2 class="font-display text-xl font-semibold mb-4">Featured</h2>
+            <div data-featured-list class="grid gap-4"></div>
+          </section>
+
+          <section>
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <h2 class="font-display text-xl font-semibold">All openings</h2>
+              <p id="jobs-loading" class="text-sm text-accent-teal hidden">
+                Fetching live jobs…
+              </p>
+            </div>
+            <div id="job-results" class="grid gap-4"></div>
+            <div id="empty-state" class="hidden surface-panel p-10 text-center">
+              <p class="font-display font-semibold text-lg">No jobs match</p>
+              <p class="text-muted text-sm mt-2">
+                Try clearing filters or broadening your search.
+              </p>
+            </div>
+            <div id="pagination"></div>
+          </section>
+
+          <section class="mt-16 pt-12 border-t border-[var(--rd-border)]">
+            <h2 class="font-display text-2xl font-bold mb-2">
+              Jobs from Around the Web
+            </h2>
+            <p id="api-attribution" class="text-muted text-sm mb-6">
+              Loading partner feeds from Himalayas, Remote OK, Jobicy, and
+              Arbeitnow…
+            </p>
+            <div id="partner-jobs" class="grid gap-4"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-t border-[var(--rd-border)] mt-8">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          <div>
+            <p class="font-display font-semibold mb-2">remotedevelopers</p>
+            <p class="text-muted text-sm leading-relaxed">
+              Made for developers by developers.
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold text-sm mb-3">Explore</p>
+            <ul class="space-y-2 text-sm text-muted">
+              <li>
+                <a href="/jobs.html" class="hover:text-accent-teal">Jobs</a>
+              </li>
+              <li>
+                <a href="/companies.html" class="hover:text-accent-teal"
+                  >Companies</a
+                >
+              </li>
+              <li>
+                <a href="/blog.html" class="hover:text-accent-teal">Blog</a>
+              </li>
+              <li>
+                <a href="/about.html" class="hover:text-accent-teal">About</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-sm mb-3">Employers</p>
+            <ul class="space-y-2 text-sm text-muted">
+              <li>
+                <a
+                  href="/post-job.html"
+                  class="hover:text-accent-teal"
+                  target="_blank"
+                  rel="noopener"
+                  >Post a Job – $5</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-sm mb-3">Legal</p>
+            <ul class="space-y-2 text-sm text-muted">
+              <li>
+                <a href="/privacy.html" class="hover:text-accent-teal"
+                  >Privacy</a
+                >
+              </li>
+              <li>
+                <a href="/terms.html" class="hover:text-accent-teal">Terms</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-muted text-xs leading-relaxed max-w-3xl mb-4">
+          Job posts are manually reviewed and added. For instant posting contact
+          us. Some jobs are syndicated from partner boards.
+        </p>
+        <p class="text-muted text-sm">
+          © 2026 remotedevelopers. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/jobs-data.js"></script>
+    <script src="/js/jobs-utils.js"></script>
+    <script src="/js/jobs-api.js"></script>
+    <script src="/js/jobs-board.js"></script>
+    <script src="https://gumroad.com/js/gumroad.js"></script>
+    <script src="/js/analytics-config.js"></script>
+    <script src="/js/analytics.js"></script>
+  </body>
+</html>

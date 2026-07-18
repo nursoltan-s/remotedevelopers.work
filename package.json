@@ -1,0 +1,18 @@
+{
+  "name": "remotedevelopers.work",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "sync-jobs": "node scripts/sync-jobs.mjs",
+    "prune-jobs": "node scripts/prune-jobs.mjs",
+    "generate-jobs": "node -e \"import('./scripts/lib/io.mjs').then(m => { m.generateJobsDataJs(); console.log('Regenerated js/jobs-data.js'); })\"",
+    "generate-blog": "node scripts/generate-blog.mjs",
+    "deploy": "wrangler pages deploy . --project-name=remotedevelopers-work --commit-dirty=true"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.0"
+  }
+}

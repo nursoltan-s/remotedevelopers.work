@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Post a Job – $5 — remotedevelopers</title>
+    <meta
+      name="description"
+      content="Post a remote developer job for a flat $5 one-time fee. Manually reviewed and published within 24 hours."
+    />
+    <link rel="canonical" href="https://remotedevelopers/post-job.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://remotedevelopers/post-job.html" />
+    <meta property="og:title" content="Post a Job – $5" />
+    <meta
+      property="og:description"
+      content="Reach remote developers for a flat $5 one-time listing fee."
+    />
+    <meta
+      property="og:image"
+      content="https://remotedevelopers/assets/og-image.svg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        if (localStorage.getItem("rd-theme") !== "dark")
+          document.documentElement.classList.add("light");
+      } catch (e) {
+        document.documentElement.classList.add("light");
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: { DEFAULT: "#0A2540", mid: "#0f3558", light: "#163a5c" },
+              accent: { teal: "#14B8A6", cyan: "#22D3EE" },
+            },
+            fontFamily: {
+              display: ["Sora", "system-ui", "sans-serif"],
+              sans: ["DM Sans", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body class="antialiased">
+    <header class="nav-glass sticky top-0 z-50">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="flex h-16 items-center justify-between gap-4">
+          <a href="/" class="flex items-center shrink-0">
+            <img
+              src="/assets/logo-nav.png"
+              alt="remotedevelopers.work"
+              class="h-8 sm:h-9 w-auto"
+              width="183"
+              height="40"
+            />
+          </a>
+          <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+            <a
+              href="/"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Home</a
+            >
+            <a
+              href="/jobs.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Jobs</a
+            >
+            <a
+              href="/post-job.html"
+              class="px-3 py-2 text-sm font-medium text-accent-cyan"
+              >Post a Job</a
+            >
+            <a
+              href="/companies.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Companies</a
+            >
+            <a
+              href="/blog.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >Blog</a
+            >
+            <a
+              href="/about.html"
+              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
+              >About</a
+            >
+          </nav>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              data-theme-toggle
+              class="btn-secondary !p-2.5"
+              aria-label="Toggle dark and light mode"
+            >
+              <svg
+                class="theme-icon-moon h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.75"
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                />
+              </svg>
+              <svg
+                class="theme-icon-sun h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.75"
+                  d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="btn-secondary !p-2.5 lg:hidden"
+              data-mobile-menu
+              aria-expanded="false"
+              aria-controls="mobile-nav"
+              aria-label="Open menu"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <nav
+          id="mobile-nav"
+          data-mobile-nav
+          class="hidden lg:hidden pb-4 border-t border-[var(--rd-border)] pt-3"
+          aria-label="Mobile"
+        >
+          <div class="flex flex-col gap-1">
+            <a href="/" class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Home</a
+            >
+            <a
+              href="/jobs.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Jobs</a
+            >
+            <a
+              href="/post-job.html"
+              class="px-3 py-2.5 text-sm font-medium rounded-lg bg-accent-teal/10 text-accent-teal"
+              >Post a Job</a
+            >
+            <a
+              href="/companies.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Companies</a
+            >
+            <a
+              href="/blog.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >Blog</a
+            >
+            <a
+              href="/about.html"
+              class="px-3 py-2.5 text-sm font-medium text-muted"
+              >About</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
+      <div class="text-center mb-10">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold">Post a Job</h1>
+        <p class="text-muted mt-3">
+          Reach remote engineers, designers, and tech leaders
+        </p>
+        <div
+          class="mt-6 inline-flex items-baseline gap-2 surface-panel px-6 py-4"
+        >
+          <span class="font-display text-4xl font-bold text-accent-teal"
+            >$5</span
+          >
+          <span class="text-muted text-sm">one-time · paid on Gumroad</span>
+        </div>
+        <p class="text-muted text-sm mt-4 max-w-md mx-auto">
+          Fill in your listing, email us the details, then pay $5 on Gumroad.
+        </p>
+      </div>
+
+      <div id="post-form-wrap">
+        <form
+          id="post-job-form"
+          class="surface-panel p-6 sm:p-8 space-y-5"
+          novalidate
+        >
+          <div>
+            <label class="form-label" for="job-title">Job Title *</label>
+            <input
+              id="job-title"
+              name="title"
+              type="text"
+              class="form-input"
+              required
+              placeholder="e.g. Senior Frontend Engineer"
+            />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label" for="company-name"
+                >Company Name *</label
+              >
+              <input
+                id="company-name"
+                name="company"
+                type="text"
+                class="form-input"
+                required
+                placeholder="Acme Inc."
+              />
+            </div>
+            <div>
+              <label class="form-label" for="logo-url">Company Logo URL</label>
+              <input
+                id="logo-url"
+                name="logo"
+                type="url"
+                class="form-input"
+                placeholder="https://…"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="job-description"
+              >Job Description *</label
+            >
+            <textarea
+              id="job-description"
+              name="description"
+              rows="6"
+              class="form-input resize-y"
+              required
+              placeholder="Role overview, team, impact…"
+            ></textarea>
+          </div>
+          <div>
+            <label class="form-label" for="requirements">Requirements *</label>
+            <textarea
+              id="requirements"
+              name="requirements"
+              rows="4"
+              class="form-input resize-y"
+              required
+              placeholder="Skills, experience, must-haves…"
+            ></textarea>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label" for="salary-range">Salary Range</label>
+              <input
+                id="salary-range"
+                name="salary"
+                type="text"
+                class="form-input"
+                placeholder="$120k – $160k"
+              />
+            </div>
+            <div>
+              <label class="form-label" for="apply-url">Apply URL *</label>
+              <input
+                id="apply-url"
+                name="applyUrl"
+                type="url"
+                class="form-input"
+                required
+                placeholder="https://company.com/careers/…"
+              />
+            </div>
+          </div>
+          <div>
+            <p class="form-label">Tech Stack</p>
+            <input type="hidden" id="tech-tags-value" name="tags" value="" />
+            <div id="tech-tags" class="flex flex-wrap gap-2"></div>
+          </div>
+          <div>
+            <label class="form-label" for="how-to-apply">How to Apply</label>
+            <textarea
+              id="how-to-apply"
+              name="howToApply"
+              rows="3"
+              class="form-input resize-y"
+              placeholder="e.g. Apply via the link — include GitHub in your resume"
+            ></textarea>
+          </div>
+
+          <div class="border-t border-[var(--rd-border)] pt-6 mt-2">
+            <p class="text-muted text-sm mb-4">
+              1) Send your listing details by email · 2) Pay
+              <strong class="text-[var(--rd-text)]">$5</strong> on Gumroad.
+              Listings go live after manual review (usually within 24h).
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <button type="button" id="btn-send-email" class="btn-secondary flex-1">
+                Send email
+              </button>
+              <a
+                id="btn-pay-gumroad"
+                href="https://sgonzales.gumroad.com/l/remotedevelopers?wanted=true"
+                class="gumroad-button btn-primary flex-1 inline-flex justify-center"
+                target="_blank"
+                rel="noopener"
+                >Pay $5</a
+              >
+            </div>
+          </div>
+        </form>
+        <p class="text-muted text-xs mt-4 text-center">
+          Payment processed by
+          <a
+            href="https://sgonzales.gumroad.com/l/remotedevelopers"
+            class="text-accent-teal hover:underline"
+            target="_blank"
+            rel="noopener"
+            >Gumroad</a
+          >.
+          Details are emailed to nursoltan.s@gmail.com for review.
+        </p>
+      </div>
+    </main>
+
+    <footer class="border-t border-[var(--rd-border)] mt-8">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          <div>
+            <p class="font-display font-semibold mb-2">remotedevelopers</p>
+            <p class="text-muted text-sm">Made for developers by developers.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-sm mb-3">Explore</p>
+            <ul class="space-y-2 text-sm text-muted">
+              <li>
+                <a href="/jobs.html" class="hover:text-accent-teal">Jobs</a>
+              </li>
+              <li>
+                <a href="/companies.html" class="hover:text-accent-teal"
+                  >Companies</a
+                >
+              </li>
+              <li>
+                <a href="/blog.html" class="hover:text-accent-teal">Blog</a>
+              </li>
+              <li>
+                <a href="/about.html" class="hover:text-accent-teal">About</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-sm mb-3">Employers</p>
+            <ul class="space-y-2 text-sm text-muted">
+              <li>
+                <a href="/post-job.html" class="gumroad-button hover:text-accent-teal"
+                   target="_blank" rel="noopener">Post a Job – $5</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-sm mb-3">Legal</p>
+            <ul class="space-y-2 text-sm text-muted">
+              <li>
+                <a href="/privacy.html" class="hover:text-accent-teal"
+                  >Privacy</a
+                >
+              </li>
+              <li>
+                <a href="/terms.html" class="hover:text-accent-teal">Terms</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-muted text-xs max-w-3xl mb-4">
+          Job posts are manually reviewed and added. For instant posting contact
+          us.
+        </p>
+        <p class="text-muted text-sm">
+          © 2026 remotedevelopers. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/gumroad-config.js"></script>
+    <script src="/js/post-job.js"></script>
+    <script src="https://gumroad.com/js/gumroad.js"></script>
+    <script src="/js/analytics-config.js"></script>
+    <script src="/js/analytics.js"></script>
+  </body>
+</html>

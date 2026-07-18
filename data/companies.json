@@ -1,0 +1,153 @@
+[
+  {
+    "name": "Topcoder",
+    "initials": "TC",
+    "domain": "topcoder.com",
+    "logo": "/assets/logos/topcoder.png",
+    "url": "https://www.topcoder.com"
+  },
+  {
+    "name": "Linear",
+    "initials": "Li",
+    "domain": "linear.app",
+    "url": "https://linear.app"
+  },
+  {
+    "name": "Vercel",
+    "initials": "Ve",
+    "domain": "vercel.com",
+    "url": "https://vercel.com"
+  },
+  {
+    "name": "Fly.io",
+    "initials": "Fl",
+    "domain": "fly.io",
+    "url": "https://fly.io"
+  },
+  {
+    "name": "Arc",
+    "initials": "Ar",
+    "domain": "arc.dev",
+    "url": "https://arc.dev"
+  },
+  {
+    "name": "Datadog",
+    "initials": "Dd",
+    "domain": "datadoghq.com",
+    "url": "https://www.datadoghq.com"
+  },
+  {
+    "name": "GitHub",
+    "initials": "Gh",
+    "domain": "github.com",
+    "url": "https://github.com"
+  },
+  {
+    "name": "Expo",
+    "initials": "Ex",
+    "domain": "expo.dev",
+    "url": "https://expo.dev"
+  },
+  {
+    "name": "HashiCorp",
+    "initials": "Hc",
+    "domain": "hashicorp.com",
+    "url": "https://www.hashicorp.com"
+  },
+  {
+    "name": "Notion",
+    "initials": "No",
+    "domain": "notion.so",
+    "url": "https://www.notion.so"
+  },
+  {
+    "name": "Stripe",
+    "initials": "St",
+    "domain": "stripe.com",
+    "url": "https://stripe.com"
+  },
+  {
+    "name": "Buffer",
+    "initials": "Bu",
+    "domain": "buffer.com",
+    "url": "https://buffer.com"
+  },
+  {
+    "name": "Figma",
+    "initials": "Fi",
+    "domain": "figma.com",
+    "url": "https://www.figma.com"
+  },
+  {
+    "name": "Hugging Face",
+    "initials": "HF",
+    "domain": "huggingface.co",
+    "url": "https://huggingface.co"
+  },
+  {
+    "name": "1Password",
+    "initials": "1P",
+    "domain": "1password.com",
+    "url": "https://1password.com"
+  },
+  {
+    "name": "Resend",
+    "initials": "Re",
+    "domain": "resend.com",
+    "url": "https://resend.com"
+  },
+  {
+    "name": "Spotify",
+    "initials": "Sp",
+    "domain": "spotify.com",
+    "url": "https://www.spotify.com"
+  },
+  {
+    "name": "Twilio",
+    "initials": "Tw",
+    "domain": "twilio.com",
+    "url": "https://www.twilio.com"
+  },
+  {
+    "name": "Cloudflare",
+    "initials": "CF",
+    "domain": "cloudflare.com",
+    "url": "https://www.cloudflare.com"
+  },
+  {
+    "name": "GitLab",
+    "initials": "GL",
+    "domain": "gitlab.com",
+    "url": "https://gitlab.com"
+  },
+  {
+    "name": "Shopify",
+    "initials": "Sh",
+    "domain": "shopify.com",
+    "url": "https://www.shopify.com"
+  },
+  {
+    "name": "DigitalOcean",
+    "initials": "DO",
+    "domain": "digitalocean.com",
+    "url": "https://www.digitalocean.com"
+  },
+  {
+    "name": "Duolingo",
+    "initials": "Du",
+    "domain": "duolingo.com",
+    "url": "https://www.duolingo.com"
+  },
+  {
+    "name": "Supabase",
+    "initials": "Sb",
+    "domain": "supabase.com",
+    "url": "https://supabase.com"
+  },
+  {
+    "name": "Cal.com",
+    "initials": "Ca",
+    "domain": "cal.com",
+    "url": "https://cal.com"
+  }
+]
