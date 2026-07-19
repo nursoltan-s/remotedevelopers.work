@@ -4187,6 +4187,13 @@ window.RD_COMPANIES = [
     "url": "https://www.topcoder.com"
   },
   {
+    "name": "OpenAI",
+    "initials": "OA",
+    "domain": "openai.com",
+    "url": "https://openai.com",
+    "jobsPage": "/companies/openai.html"
+  },
+  {
     "name": "Linear",
     "initials": "Li",
     "domain": "linear.app",
@@ -4196,7 +4203,8 @@ window.RD_COMPANIES = [
     "name": "Vercel",
     "initials": "Ve",
     "domain": "vercel.com",
-    "url": "https://vercel.com"
+    "url": "https://vercel.com",
+    "jobsPage": "/companies/vercel.html"
   },
   {
     "name": "Fly.io",
@@ -4220,7 +4228,8 @@ window.RD_COMPANIES = [
     "name": "GitHub",
     "initials": "Gh",
     "domain": "github.com",
-    "url": "https://github.com"
+    "url": "https://github.com",
+    "jobsPage": "/companies/github.html"
   },
   {
     "name": "Expo",
@@ -4244,7 +4253,8 @@ window.RD_COMPANIES = [
     "name": "Stripe",
     "initials": "St",
     "domain": "stripe.com",
-    "url": "https://stripe.com"
+    "url": "https://stripe.com",
+    "jobsPage": "/companies/stripe.html"
   },
   {
     "name": "Buffer",
@@ -4292,19 +4302,22 @@ window.RD_COMPANIES = [
     "name": "Cloudflare",
     "initials": "CF",
     "domain": "cloudflare.com",
-    "url": "https://www.cloudflare.com"
+    "url": "https://www.cloudflare.com",
+    "jobsPage": "/companies/cloudflare.html"
   },
   {
     "name": "GitLab",
     "initials": "GL",
     "domain": "gitlab.com",
-    "url": "https://gitlab.com"
+    "url": "https://gitlab.com",
+    "jobsPage": "/companies/gitlab.html"
   },
   {
     "name": "Shopify",
     "initials": "Sh",
     "domain": "shopify.com",
-    "url": "https://www.shopify.com"
+    "url": "https://www.shopify.com",
+    "jobsPage": "/companies/shopify.html"
   },
   {
     "name": "DigitalOcean",
@@ -4342,21 +4355,32 @@ window.RD_COMPANIES = [
 window.RD_TECH_TAGS = [
   "React",
   "TypeScript",
+  "JavaScript",
   "Next.js",
   "Node.js",
   "Python",
   "Go",
   "Rust",
+  "Java",
+  "PHP",
+  "Laravel",
+  "Ruby",
+  "Rails",
+  "Flutter",
+  "React Native",
   "AWS",
   "Kubernetes",
+  "Docker",
+  "DevOps",
+  "AI",
+  "ML",
+  "Machine Learning",
+  "Data Engineer",
   "GraphQL",
   "PostgreSQL",
   "Vue",
   "Swift",
   "Kotlin",
-  "Figma",
   "Terraform",
-  "Docker",
-  "ML",
   "Security"
 ];

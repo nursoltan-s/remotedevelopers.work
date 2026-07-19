@@ -69,6 +69,16 @@
           Teams that hire remote — and mean it.
         </p>
       </div>
+      <div class="mb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4" data-reveal>
+        <a href="/companies/openai.html" class="browse-card"><span class="font-semibold">OpenAI remote jobs</span></a>
+        <a href="/companies/stripe.html" class="browse-card"><span class="font-semibold">Stripe remote jobs</span></a>
+        <a href="/companies/shopify.html" class="browse-card"><span class="font-semibold">Shopify remote jobs</span></a>
+        <a href="/companies/github.html" class="browse-card"><span class="font-semibold">GitHub remote jobs</span></a>
+        <a href="/companies/vercel.html" class="browse-card"><span class="font-semibold">Vercel remote jobs</span></a>
+        <a href="/companies/cloudflare.html" class="browse-card"><span class="font-semibold">Cloudflare remote jobs</span></a>
+        <a href="/companies/gitlab.html" class="browse-card"><span class="font-semibold">GitLab remote jobs</span></a>
+        <a href="/roles/startup.html" class="browse-card"><span class="font-semibold text-[var(--rd-primary)]">Startup jobs →</span></a>
+      </div>
       <div
         id="companies-wall"
         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
@@ -86,13 +96,18 @@
       document.addEventListener("DOMContentLoaded", () => {
         const el = document.getElementById("companies-wall");
         if (!el || !window.RD_COMPANIES) return;
-        el.innerHTML = window.RD_COMPANIES.map(
-          (c) => `
-          <a href="${window.RDJobs.escapeAttr(c.url)}" target="_blank" rel="noopener noreferrer" class="company-tile">
+        el.innerHTML = window.RD_COMPANIES.map((c) => {
+          const href = c.jobsPage || c.url;
+          const external = !c.jobsPage;
+          const target = external
+            ? ' target="_blank" rel="noopener noreferrer"'
+            : "";
+          return `
+          <a href="${window.RDJobs.escapeAttr(href)}"${target} class="company-tile">
             ${window.RDJobs.logoMarkHTML(c, { size: 56, className: "w-14 h-14 text-lg" })}
             <span class="text-sm font-medium text-center">${window.RDJobs.escapeHtml(c.name)}</span>
-          </a>`,
-        ).join("");
+          </a>`;
+        }).join("");
       });
     </script>
     <script src="https://gumroad.com/js/gumroad.js"></script>

@@ -10,6 +10,7 @@
     "prune-jobs": "node scripts/prune-jobs.mjs",
     "generate-jobs": "node -e \"import('./scripts/lib/io.mjs').then(m => { m.generateJobsDataJs(); console.log('Regenerated js/jobs-data.js'); })\"",
     "generate-blog": "node scripts/generate-blog.mjs",
+    "generate-pages": "node scripts/generate-redesign-pages.mjs",
     "deploy": "wrangler pages deploy . --project-name=remotedevelopers-work --branch=production --commit-dirty=true"
   },
   "devDependencies": {

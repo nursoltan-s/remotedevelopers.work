@@ -702,6 +702,62 @@ html.light .theme-icon-sun {
   background: var(--rd-card-bg);
 }
 
+/* Footer SEO link directory (remote.co-style) */
+.footer-seo-title {
+  font-family: "Geist Sans", Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  color: var(--rd-text);
+}
+
+.footer-seo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem 2rem;
+}
+
+@media (min-width: 640px) {
+  .footer-seo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-seo-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.footer-seo-heading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rd-text);
+  margin-bottom: 0.75rem;
+}
+
+.footer-seo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-seo-list a {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--rd-text-muted);
+  text-decoration: none;
+}
+
+.footer-seo-list a:hover {
+  color: var(--rd-primary);
+}
+
 .stars {
   color: #fbbf24;
   letter-spacing: 0.1em;

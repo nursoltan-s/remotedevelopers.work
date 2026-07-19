@@ -15,11 +15,21 @@
 
   const TECH_PAGES = [
     { name: "React", slug: "react", tags: ["React"] },
-    { name: "Node.js", slug: "nodejs", tags: ["Node.js", "Node"] },
     { name: "Python", slug: "python", tags: ["Python"] },
-    { name: "Rust", slug: "rust", tags: ["Rust"] },
+    { name: "TypeScript", slug: "typescript", tags: ["TypeScript", "TS"] },
+    { name: "Node.js", slug: "nodejs", tags: ["Node.js", "Node"] },
     { name: "Go", slug: "go", tags: ["Go", "Golang"] },
+    { name: "Rust", slug: "rust", tags: ["Rust"] },
+    { name: "DevOps", slug: "devops", tags: ["DevOps", "Kubernetes", "Docker"] },
+    { name: "AWS", slug: "aws", tags: ["AWS"] },
     { name: "AI", slug: "ai", tags: ["AI", "ML", "Machine Learning", "LLM"] },
+    {
+      name: "Data Eng",
+      slug: "data-engineer",
+      tags: ["Data Engineer", "Data Engineering", "ETL"],
+    },
+    { name: "Flutter", slug: "flutter", tags: ["Flutter", "Dart"] },
+    { name: "Java", slug: "java", tags: ["Java", "Spring"] },
   ];
 
   function countByTags(tags) {

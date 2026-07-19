@@ -67,7 +67,101 @@
     </header>`;
   }
 
+  function seoLinkCol(title, links) {
+    return `
+      <div>
+        <p class="footer-seo-heading">${title}</p>
+        <ul class="footer-seo-list">
+          ${links
+            .map(
+              (l) =>
+                `<li><a href="${l.href}">${l.label}</a></li>`,
+            )
+            .join("")}
+        </ul>
+      </div>`;
+  }
+
   function footerHTML() {
+    const seoTech = [
+      { href: "/tech/react.html", label: "Remote React Jobs" },
+      { href: "/tech/python.html", label: "Remote Python Jobs" },
+      { href: "/tech/javascript.html", label: "Remote JavaScript Jobs" },
+      { href: "/tech/typescript.html", label: "Remote TypeScript Jobs" },
+      { href: "/tech/nodejs.html", label: "Remote Node.js Jobs" },
+      { href: "/tech/go.html", label: "Remote Golang Jobs" },
+      { href: "/tech/rust.html", label: "Remote Rust Jobs" },
+      { href: "/tech/java.html", label: "Remote Java Jobs" },
+      { href: "/tech/php.html", label: "Remote PHP Jobs" },
+      { href: "/tech/laravel.html", label: "Remote Laravel Jobs" },
+      { href: "/tech/ruby.html", label: "Remote Ruby Jobs" },
+      { href: "/tech/rails.html", label: "Remote Rails Jobs" },
+      { href: "/tech/flutter.html", label: "Remote Flutter Jobs" },
+      { href: "/tech/react-native.html", label: "Remote React Native Jobs" },
+      { href: "/tech/devops.html", label: "Remote DevOps Jobs" },
+      { href: "/tech/kubernetes.html", label: "Remote Kubernetes Jobs" },
+      { href: "/tech/aws.html", label: "Remote AWS Jobs" },
+      { href: "/tech/ai.html", label: "Remote AI Engineer Jobs" },
+      { href: "/tech/data-engineer.html", label: "Remote Data Engineer Jobs" },
+      { href: "/tech/machine-learning.html", label: "Remote Machine Learning Jobs" },
+      { href: "/tech.html", label: "All technologies →" },
+    ];
+
+    const seoRoles = [
+      { href: "/roles/frontend-developer.html", label: "Remote Frontend Jobs" },
+      { href: "/roles/backend-developer.html", label: "Remote Backend Jobs" },
+      { href: "/roles/full-stack-developer.html", label: "Remote Full Stack Jobs" },
+      { href: "/roles/software-engineer.html", label: "Remote Software Engineer Jobs" },
+      { href: "/roles/senior-developer.html", label: "Senior Remote Developer Jobs" },
+      { href: "/roles/senior-react.html", label: "Senior Remote React Jobs" },
+      { href: "/roles/senior-python.html", label: "Senior Remote Python Jobs" },
+      { href: "/roles/senior-golang.html", label: "Senior Remote Golang Jobs" },
+      { href: "/roles/junior-developer.html", label: "Junior Remote Developer Jobs" },
+      { href: "/roles/contract-developer.html", label: "Remote Contract Developer Jobs" },
+      { href: "/roles/freelance-developer.html", label: "Remote Freelance Developer Jobs" },
+      { href: "/roles/startup.html", label: "Remote Startup Jobs" },
+      { href: "/roles/yc-startup.html", label: "YC Startup Jobs Remote" },
+      { href: "/roles/ai-startup.html", label: "Remote AI Startup Jobs" },
+      { href: "/roles/saas.html", label: "Remote SaaS Jobs" },
+      { href: "/roles/tech.html", label: "Remote Tech Jobs" },
+      { href: "/roles.html", label: "All roles →" },
+    ];
+
+    const seoLocations = [
+      { href: "/locations/usa.html", label: "Remote Jobs USA" },
+      { href: "/locations/canada.html", label: "Remote Jobs Canada" },
+      { href: "/locations/uk.html", label: "Remote Jobs UK" },
+      { href: "/locations/germany.html", label: "Remote Jobs Germany" },
+      { href: "/locations/europe.html", label: "Remote Jobs Europe" },
+      { href: "/locations/asia.html", label: "Remote Jobs Asia" },
+      { href: "/locations/latam.html", label: "Remote Jobs LATAM" },
+      { href: "/locations/australia.html", label: "Remote Jobs Australia" },
+      { href: "/locations/worldwide.html", label: "Remote Jobs Worldwide" },
+    ];
+
+    const seoSalary = [
+      { href: "/salary/100k.html", label: "Remote Developer Jobs $100k" },
+      { href: "/salary/150k.html", label: "Remote Developer Jobs $150k" },
+      { href: "/salary/200k.html", label: "Remote Developer Jobs $200k" },
+      { href: "/salary/react-100k.html", label: "Remote React Jobs $100k" },
+      { href: "/salary/python.html", label: "Remote Python Salary Jobs" },
+      { href: "/salary/golang.html", label: "Remote Golang Salary Jobs" },
+      { href: "/salary/rust.html", label: "Remote Rust Salary Jobs" },
+      { href: "/salary/ai.html", label: "Remote AI Salary Jobs" },
+      { href: "/salary.html", label: "All salary pages →" },
+    ];
+
+    const seoCompanies = [
+      { href: "/companies/openai.html", label: "OpenAI Remote Jobs" },
+      { href: "/companies/stripe.html", label: "Stripe Remote Jobs" },
+      { href: "/companies/shopify.html", label: "Shopify Remote Jobs" },
+      { href: "/companies/github.html", label: "GitHub Remote Jobs" },
+      { href: "/companies/vercel.html", label: "Vercel Remote Jobs" },
+      { href: "/companies/cloudflare.html", label: "Cloudflare Remote Jobs" },
+      { href: "/companies/gitlab.html", label: "GitLab Remote Jobs" },
+      { href: "/companies.html", label: "All companies →" },
+    ];
+
     return `
     <footer class="border-t border-[var(--rd-border)] mt-8">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 py-14">
@@ -88,6 +182,8 @@
             <p class="font-semibold text-sm mb-3">Explore</p>
             <ul class="space-y-2 text-sm text-muted">
               <li><a href="/jobs.html" class="hover:text-[var(--rd-primary)]">Jobs</a></li>
+              <li><a href="/tech.html" class="hover:text-[var(--rd-primary)]">By technology</a></li>
+              <li><a href="/roles.html" class="hover:text-[var(--rd-primary)]">By role</a></li>
               <li><a href="/companies.html" class="hover:text-[var(--rd-primary)]">Companies</a></li>
               <li><a href="/guides.html" class="hover:text-[var(--rd-primary)]">Guides</a></li>
               <li><a href="/salary.html" class="hover:text-[var(--rd-primary)]">Salary</a></li>
@@ -112,6 +208,18 @@
             </ul>
           </div>
         </div>
+
+        <div class="footer-seo border-t border-[var(--rd-border)] pt-10 mb-10">
+          <p class="footer-seo-title">Popular remote developer job searches</p>
+          <div class="footer-seo-grid">
+            ${seoLinkCol("Remote jobs by technology", seoTech)}
+            ${seoLinkCol("Remote jobs by role", seoRoles)}
+            ${seoLinkCol("Remote jobs by location", seoLocations)}
+            ${seoLinkCol("Remote jobs by salary", seoSalary)}
+            ${seoLinkCol("Company remote jobs", seoCompanies)}
+          </div>
+        </div>
+
         <p class="text-muted text-xs leading-relaxed max-w-3xl mb-4">
           Job posts are manually reviewed. Some listings are syndicated from partner boards. Remote-only — no hybrid or on-site noise.
         </p>
