@@ -71,7 +71,7 @@ async function onRequest(context) {
 }
 __name(onRequest, "onRequest");
 
-// ../.wrangler/tmp/pages-E6RrkG/functionsRoutes-0.8213916476362446.mjs
+// ../.wrangler/tmp/pages-p3aUxE/functionsRoutes-0.6616229977184993.mjs
 var routes = [
   {
     routePath: "/api/himalayas",

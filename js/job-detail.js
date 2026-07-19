@@ -67,7 +67,7 @@
     const partner =
       job.source === "partner" && job.partnerName
         ? `<p class="text-muted text-sm mt-2">Syndicated from
-            <a href="${escapeAttr(job.partnerUrl || "#")}" class="text-accent-teal hover:underline" target="_blank" rel="noopener noreferrer">${escapeHtml(job.partnerName)}</a>
+            <a href="${escapeAttr(job.partnerUrl || "#")}" class="text-[var(--rd-primary)] hover:underline" target="_blank" rel="noopener noreferrer">${escapeHtml(job.partnerName)}</a>
           </p>`
         : "";
 
@@ -88,7 +88,7 @@
     const postedRel = relativeTime(job.postedAt);
 
     root.innerHTML = `
-      <a href="/jobs.html" class="text-sm text-accent-teal hover:underline inline-flex mb-6">← Back to jobs</a>
+      <a href="/jobs.html" class="text-sm text-[var(--rd-primary)] hover:underline inline-flex mb-6">← Back to jobs</a>
 
       <header class="surface-panel p-6 sm:p-8 mb-6">
         <div class="flex flex-col sm:flex-row gap-5 sm:items-start">

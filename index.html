@@ -3,51 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>remotedevelopers — Remote Developer Jobs That Pay Well</title>
+    <title>remotedevelopers — Remote Jobs for Developers. Nothing Else.</title>
     <meta
       name="description"
-      content="Hand-curated remote jobs for engineers, designers, and tech leaders. Browse high-paying remote developer roles or post a job for $5."
+      content="Curated, remote-only engineering jobs from startups and global companies. Developer-first. No recruiter spam."
     />
-    <link rel="canonical" href="https://remotedevelopers/" />
+    <link rel="canonical" href="https://remotedevelopers.work/" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://remotedevelopers/" />
+    <meta property="og:url" content="https://remotedevelopers.work/" />
     <meta
       property="og:title"
-      content="remotedevelopers — Remote Jobs That Pay Well"
+      content="remotedevelopers — Remote Jobs for Developers"
     />
     <meta
       property="og:description"
-      content="Hand-curated remote jobs for engineers, designers, and tech leaders."
+      content="Curated. Remote-only. Developer-first. Find verified remote engineering jobs."
     />
     <meta
       property="og:image"
-      content="https://remotedevelopers/assets/og-image.svg"
+      content="https://remotedevelopers.work/assets/og-image.svg"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="remotedevelopers" />
     <meta
       name="twitter:description"
-      content="Hand-curated remote jobs for engineers, designers, and tech leaders."
+      content="The best place for remote developer jobs."
     />
     <meta
       name="twitter:image"
-      content="https://remotedevelopers/assets/og-image.svg"
+      content="https://remotedevelopers.work/assets/og-image.svg"
     />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/400.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/500.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/600.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/700.css" rel="stylesheet" />
     <script>
       try {
-        if (localStorage.getItem("rd-theme") !== "dark")
+        if (localStorage.getItem("rd-theme") === "light")
           document.documentElement.classList.add("light");
-      } catch (e) {
-        document.documentElement.classList.add("light");
-      }
+      } catch (e) {}
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -55,430 +57,413 @@
         theme: {
           extend: {
             colors: {
-              navy: { DEFAULT: "#0A2540", mid: "#0f3558", light: "#163a5c" },
-              accent: { teal: "#14B8A6", cyan: "#22D3EE" },
+              navy: { DEFAULT: "#0B1220", mid: "#111827", light: "#1F2937" },
+              accent: { teal: "#3B82F6", cyan: "#6366F1" },
             },
             fontFamily: {
-              display: ["Sora", "system-ui", "sans-serif"],
-              sans: ["DM Sans", "system-ui", "sans-serif"],
+              display: ["Geist Sans", "Inter", "system-ui", "sans-serif"],
+              sans: ["Geist Sans", "Inter", "system-ui", "sans-serif"],
             },
           },
         },
       };
     </script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body class="antialiased">
-    <a
-      href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-accent-teal focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
-      >Skip to content</a
-    >
-
-    <header class="nav-glass sticky top-0 z-50">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="flex h-16 items-center justify-between gap-4">
-          <a href="/" class="flex items-center shrink-0 group">
-            <img
-              src="/assets/logo-nav.png"
-              alt="remotedevelopers.work"
-              class="h-8 sm:h-9 w-auto"
-              width="183"
-              height="40"
-            />
-          </a>
-
-          <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
-            <a href="/" class="px-3 py-2 text-sm font-medium text-accent-cyan"
-              >Home</a
-            >
-            <a
-              href="/jobs.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Jobs</a
-            >
-            <a
-              href="/post-job.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Post a Job</a
-            >
-            <a
-              href="/companies.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Companies</a
-            >
-            <a
-              href="/blog.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Blog</a
-            >
-            <a
-              href="/about.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >About</a
-            >
-          </nav>
-
-          <div class="flex items-center gap-2">
-            <button
-              type="button"
-              data-theme-toggle
-              class="btn-secondary !p-2.5"
-              aria-label="Toggle dark and light mode"
-            >
-              <svg
-                class="theme-icon-moon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.75"
-                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
-                />
-              </svg>
-              <svg
-                class="theme-icon-sun h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.75"
-                  d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
-            </button>
-            <a
-              href="/post-job.html"
-              class="btn-primary !py-2 !px-3 text-sm hidden sm:inline-flex"
-              target="_blank"
-              rel="noopener"
-              >Post a Job – $5</a
-            >
-            <button
-              type="button"
-              class="btn-secondary !p-2.5 lg:hidden"
-              data-mobile-menu
-              aria-expanded="false"
-              aria-controls="mobile-nav"
-              aria-label="Open menu"
-            >
-              <svg
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <nav
-          id="mobile-nav"
-          data-mobile-nav
-          class="hidden lg:hidden pb-4 border-t border-[var(--rd-border)] pt-3"
-          aria-label="Mobile"
-        >
-          <div class="flex flex-col gap-1">
-            <a
-              href="/"
-              class="px-3 py-2.5 text-sm font-medium rounded-lg bg-accent-teal/10 text-accent-teal"
-              >Home</a
-            >
-            <a
-              href="/jobs.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Jobs</a
-            >
-            <a
-              href="/post-job.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Post a Job</a
-            >
-            <a
-              href="/companies.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Companies</a
-            >
-            <a
-              href="/blog.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Blog</a
-            >
-            <a
-              href="/about.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >About</a
-            >
-          </div>
-        </nav>
-      </div>
-    </header>
+    <div data-rd-header="home"></div>
+    <script src="/js/chrome.js"></script>
 
     <main id="main">
       <!-- Hero -->
       <section class="hero-bg">
-        <div class="hero-snippet" style="top: 18%; left: 6%" aria-hidden="true">
-          const job = await findRemote({ pay: "well" });
-        </div>
         <div
-          class="hero-snippet"
-          style="top: 55%; right: 8%"
-          aria-hidden="true"
+          class="relative mx-auto max-w-6xl px-4 sm:px-6 pt-16 pb-20 sm:pt-24 sm:pb-28"
         >
-          export function hire() { return &lt;Engineers /&gt;; }
-        </div>
-        <div
-          class="hero-snippet"
-          style="bottom: 12%; left: 22%"
-          aria-hidden="true"
-        >
-          // timezone: flexible · salary: transparent
-        </div>
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div data-reveal>
+              <h1 class="text-display-xl font-display">
+                Remote jobs for developers.<br />
+                <span class="text-muted">Nothing else.</span>
+              </h1>
+              <p class="mt-6 text-lg text-muted max-w-xl leading-relaxed">
+                Find verified remote engineering jobs from startups and global
+                companies.
+              </p>
+              <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <a href="/jobs.html" class="btn-primary">Find Jobs</a>
+                <a href="/post-job.html" class="btn-secondary">Post a Job</a>
+              </div>
+              <ul class="check-list mt-8">
+                <li>Updated Daily</li>
+                <li>Remote Only</li>
+                <li>No Recruiter Spam</li>
+              </ul>
+              <p id="trust-updated" class="mt-4 text-sm text-muted"></p>
+            </div>
 
-        <div
-          class="relative mx-auto max-w-6xl px-4 sm:px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 text-center"
-        >
-          <p
-            class="font-display text-accent-teal font-semibold tracking-wide text-sm sm:text-base mb-4"
-          >
-            remotedevelopers
-          </p>
-          <h1
-            class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-4xl mx-auto"
-          >
-            Remote Developer Jobs That Actually Pay Well
-          </h1>
-          <p
-            class="mt-6 text-lg sm:text-xl text-muted max-w-2xl mx-auto leading-relaxed"
-          >
-            Hand-curated remote jobs for engineers, designers, and tech leaders
-          </p>
-          <div
-            class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-          >
-            <a
-              href="/jobs.html"
-              class="btn-primary w-full sm:w-auto min-w-[10rem]"
-              >Browse Jobs</a
-            >
-            <a
-              href="/post-job.html"
-              class="btn-secondary w-full sm:w-auto min-w-[10rem]"
-              target="_blank"
-              rel="noopener"
-              >Post a Job – $5</a
-            >
+            <div class="relative hidden lg:block min-h-[22rem]" aria-hidden="true">
+              <div
+                class="hero-float-card absolute top-0 right-4 w-72 rotate-2"
+              >
+                <p class="text-xs text-muted mb-1">Stripe</p>
+                <p class="font-semibold text-lg">Frontend Engineer</p>
+                <p class="text-[var(--rd-primary)] font-semibold mt-1">
+                  $120k–$180k
+                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="tag-chip">React</span>
+                  <span class="tag-chip">Remote</span>
+                  <span class="tag-chip">Full-time</span>
+                </div>
+              </div>
+              <div
+                class="hero-float-card absolute top-28 left-0 w-64 -rotate-3"
+              >
+                <p class="text-xs text-muted mb-1">Vercel</p>
+                <p class="font-semibold">Senior Backend Engineer</p>
+                <p class="text-[var(--rd-primary)] font-semibold mt-1">
+                  $160k–$220k
+                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="tag-chip">Python</span>
+                  <span class="tag-chip">AWS</span>
+                </div>
+              </div>
+              <div
+                class="hero-float-card absolute bottom-0 right-12 w-60 rotate-1"
+              >
+                <p class="text-xs text-muted mb-1">Cloudflare</p>
+                <p class="font-semibold">Platform Engineer</p>
+                <p class="text-[var(--rd-primary)] font-semibold mt-1">
+                  $140k–$190k
+                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="tag-chip">Go</span>
+                  <span class="tag-chip">Workers</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Featured -->
-      <section class="section-pad mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+      <!-- Stats -->
+      <section class="border-t border-[var(--rd-border)]">
+        <div
+          class="mx-auto max-w-6xl px-4 sm:px-6 py-14 grid grid-cols-2 lg:grid-cols-4 gap-8"
+          data-reveal
+        >
           <div>
-            <h2 class="font-display text-2xl sm:text-3xl font-bold">
-              Featured roles
-            </h2>
-            <p class="text-muted mt-2">
-              Hand-picked openings with strong compensation
+            <p class="stat-value">
+              <span data-count="15400" data-suffix="+">0</span>
+            </p>
+            <p class="stat-label">Remote Jobs</p>
+          </div>
+          <div>
+            <p class="stat-value">
+              <span data-count="4000" data-suffix="+">0</span>
+            </p>
+            <p class="stat-label">Companies</p>
+          </div>
+          <div>
+            <p class="stat-value">
+              <span data-count="150" data-suffix="+">0</span>
+            </p>
+            <p class="stat-label">Countries</p>
+          </div>
+          <div>
+            <p class="stat-value">Updated</p>
+            <p class="stat-label">Every Day</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Large search -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6" data-reveal>
+          <h2 class="text-display-md font-display text-center mb-8">
+            Search remote roles
+          </h2>
+          <form
+            id="home-search-form"
+            class="surface-panel p-5 sm:p-6 space-y-4"
+          >
+            <input
+              type="search"
+              name="q"
+              class="form-input form-input-lg"
+              placeholder="Search jobs..."
+              autocomplete="off"
+            />
+            <div class="grid sm:grid-cols-3 gap-3">
+              <select name="role" class="form-input form-input-lg">
+                <option value="">Role</option>
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
+                <option value="Full Stack">Full Stack</option>
+                <option value="DevOps">DevOps</option>
+                <option value="AI">AI</option>
+                <option value="Data">Data</option>
+              </select>
+              <select name="level" class="form-input form-input-lg">
+                <option value="">Seniority</option>
+                <option value="Junior">Junior</option>
+                <option value="Mid">Mid</option>
+                <option value="Senior">Senior</option>
+              </select>
+              <select name="location" class="form-input form-input-lg">
+                <option value="">Anywhere</option>
+                <option value="USA">USA</option>
+                <option value="Europe">Europe</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="Asia">Asia</option>
+                <option value="LATAM">LATAM</option>
+                <option value="Australia">Australia</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary w-full sm:w-auto">
+              Search Jobs
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Featured companies -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="text-center mb-10" data-reveal>
+            <h2 class="text-display-md font-display">Featured companies</h2>
+            <p class="text-muted mt-3">
+              Brands developers recognize — hiring remotely worldwide.
             </p>
           </div>
-          <a
-            href="/jobs.html"
-            class="text-sm font-semibold text-accent-teal hover:underline"
-            >View all jobs →</a
-          >
-        </div>
-        <div id="home-featured" class="grid gap-4"></div>
-      </section>
-
-      <!-- How it works -->
-      <section class="section-pad border-t border-[var(--rd-border)]">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 class="font-display text-2xl sm:text-3xl font-bold text-center">
-            How it works
-          </h2>
-          <p class="text-muted text-center mt-2 max-w-lg mx-auto">
-            Simple for candidates. Affordable for hiring teams.
-          </p>
-          <div class="mt-12 grid sm:grid-cols-3 gap-8">
-            <div>
-              <div
-                class="text-accent-cyan font-display text-3xl font-bold mb-3"
-              >
-                01
-              </div>
-              <h3 class="font-display font-semibold text-lg mb-2">
-                Browse curated roles
-              </h3>
-              <p class="text-muted text-sm leading-relaxed">
-                Filter by stack, salary, and seniority. Every curated listing is
-                reviewed for remote quality.
-              </p>
-            </div>
-            <div>
-              <div
-                class="text-accent-cyan font-display text-3xl font-bold mb-3"
-              >
-                02
-              </div>
-              <h3 class="font-display font-semibold text-lg mb-2">
-                Apply on the source
-              </h3>
-              <p class="text-muted text-sm leading-relaxed">
-                One click takes you to the company’s apply page — no accounts,
-                no spam resumes.
-              </p>
-            </div>
-            <div>
-              <div
-                class="text-accent-cyan font-display text-3xl font-bold mb-3"
-              >
-                03
-              </div>
-              <h3 class="font-display font-semibold text-lg mb-2">
-                Post for five dollars
-              </h3>
-              <p class="text-muted text-sm leading-relaxed">
-                Reach remote talent with a $5 one-time listing. We review and
-                publish within 24 hours.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Companies teaser -->
-      <section class="section-pad border-t border-[var(--rd-border)]">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-          <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
-            <div>
-              <h2 class="font-display text-2xl sm:text-3xl font-bold">
-                Companies hiring remotely
-              </h2>
-              <p class="text-muted mt-2">
-                Teams that treat remote as a first-class setup
-              </p>
-            </div>
-            <a
-              href="/companies.html"
-              class="text-sm font-semibold text-accent-teal hover:underline"
-              >See all →</a
-            >
-          </div>
           <div
-            id="home-companies"
+            id="home-brands"
             class="grid grid-cols-2 sm:grid-cols-4 gap-4"
           ></div>
         </div>
       </section>
 
-      <!-- CTA -->
+      <!-- Featured jobs -->
       <section class="section-pad border-t border-[var(--rd-border)]">
-        <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-          <h2 class="font-display text-2xl sm:text-3xl font-bold">
-            Hiring remote developers?
-          </h2>
-          <p class="text-muted mt-3">
-            Post your role for a flat $5. No monthly plans. Manual review keeps
-            quality high.
-          </p>
-          <a
-            href="/post-job.html"
-            class="btn-primary mt-8 inline-flex"
-            target="_blank"
-            rel="noopener"
-            >Post a Job – $5</a
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div
+            class="flex flex-wrap items-end justify-between gap-4 mb-10"
+            data-reveal
           >
+            <div>
+              <h2 class="text-display-md font-display">Latest jobs</h2>
+              <p class="text-muted mt-2">
+                Curated remote engineering roles with salaries when available.
+              </p>
+            </div>
+            <a
+              href="/jobs.html"
+              class="text-sm font-semibold text-[var(--rd-primary)] hover:underline"
+              >View all jobs →</a
+            >
+          </div>
+          <div id="home-featured" class="grid gap-5"></div>
+        </div>
+      </section>
+
+      <!-- Browse by technology -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="mb-10" data-reveal>
+            <h2 class="text-display-md font-display">Browse by technology</h2>
+            <p class="text-muted mt-2">Jump into stack-specific remote roles.</p>
+          </div>
+          <div
+            id="home-tech"
+            class="grid grid-cols-2 sm:grid-cols-3 gap-4"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Browse by country -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="mb-10" data-reveal>
+            <h2 class="text-display-md font-display">Browse by country</h2>
+            <p class="text-muted mt-2">Remote roles by region and timezone fit.</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <a href="/locations/worldwide.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">Worldwide</span></a
+            >
+            <a href="/locations/usa.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">USA</span></a
+            >
+            <a href="/locations/europe.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">Europe</span></a
+            >
+            <a href="/locations/canada.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">Canada</span></a
+            >
+            <a href="/locations/uk.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">UK</span></a
+            >
+            <a href="/locations/asia.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">Asia</span></a
+            >
+            <a href="/locations/latam.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">LATAM</span></a
+            >
+            <a href="/locations/australia.html" class="browse-card" data-reveal
+              ><span class="font-semibold text-lg">Australia</span></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Browse by salary -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="mb-10" data-reveal>
+            <h2 class="text-display-md font-display">Browse by salary</h2>
+            <p class="text-muted mt-2">
+              High-paying remote stacks — transparent compensation first.
+            </p>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="/salary/react-100k.html" class="browse-card" data-reveal>
+              <span class="font-semibold text-lg"
+                >Remote React Jobs over $100k</span
+              >
+            </a>
+            <a href="/salary/golang.html" class="browse-card" data-reveal>
+              <span class="font-semibold text-lg">Remote Golang Jobs</span>
+            </a>
+            <a href="/salary/rust.html" class="browse-card" data-reveal>
+              <span class="font-semibold text-lg">Remote Rust Jobs</span>
+            </a>
+            <a href="/salary/python.html" class="browse-card" data-reveal>
+              <span class="font-semibold text-lg">Remote Python Jobs</span>
+            </a>
+            <a href="/salary/ai.html" class="browse-card" data-reveal>
+              <span class="font-semibold text-lg">Remote AI Jobs</span>
+            </a>
+            <a href="/salary.html" class="browse-card" data-reveal>
+              <span class="font-semibold text-lg text-[var(--rd-primary)]"
+                >All salary pages →</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Remote Guides -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div
+            class="flex flex-wrap items-end justify-between gap-4 mb-10"
+            data-reveal
+          >
+            <div>
+              <h2 class="text-display-md font-display">Remote guides</h2>
+              <p class="text-muted mt-2">
+                Practical advice for landing and thriving in remote roles.
+              </p>
+            </div>
+            <a
+              href="/guides.html"
+              class="text-sm font-semibold text-[var(--rd-primary)] hover:underline"
+              >All guides →</a
+            >
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="/guides/how-to-find-remote-jobs.html" class="browse-card" data-reveal>
+              <span class="font-semibold">How to Find Remote Jobs</span>
+            </a>
+            <a href="/guides/top-remote-companies.html" class="browse-card" data-reveal>
+              <span class="font-semibold">Top Remote Companies</span>
+            </a>
+            <a href="/guides/best-countries.html" class="browse-card" data-reveal>
+              <span class="font-semibold">Best Countries for Remote Developers</span>
+            </a>
+            <a href="/guides/negotiate-salary.html" class="browse-card" data-reveal>
+              <span class="font-semibold">How to Negotiate Remote Salary</span>
+            </a>
+            <a href="/guides/react-interview-questions.html" class="browse-card" data-reveal>
+              <span class="font-semibold">React Interview Questions</span>
+            </a>
+            <a href="/guides/remote-resume.html" class="browse-card" data-reveal>
+              <span class="font-semibold">Remote Resume Guide</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 class="text-display-md font-display text-center mb-10" data-reveal>
+            Loved by remote developers
+          </h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <blockquote class="testimonial-card" data-reveal>
+              <p class="stars" aria-label="5 stars">★★★★★</p>
+              <p class="leading-relaxed">
+                Found my first remote job in 2 weeks.
+              </p>
+              <footer class="mt-4 text-sm text-muted">— Alex</footer>
+            </blockquote>
+            <blockquote class="testimonial-card" data-reveal>
+              <p class="stars" aria-label="5 stars">★★★★★</p>
+              <p class="leading-relaxed">Best remote-only job board.</p>
+              <footer class="mt-4 text-sm text-muted">— Maria</footer>
+            </blockquote>
+            <blockquote class="testimonial-card" data-reveal>
+              <p class="stars" aria-label="5 stars">★★★★★</p>
+              <p class="leading-relaxed">Cleaner than LinkedIn.</p>
+              <footer class="mt-4 text-sm text-muted">— David</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="section-pad border-t border-[var(--rd-border)]">
+        <div class="mx-auto max-w-2xl px-4 sm:px-6 text-center" data-reveal>
+          <h2 class="text-display-md font-display">Weekly remote digest</h2>
+          <p class="text-muted mt-3">
+            Curated remote developer jobs — no spam, just signal.
+          </p>
+          <form
+            class="mt-8 flex flex-col sm:flex-row gap-3"
+            action="mailto:hello@remotedevelopers.work"
+            method="get"
+            enctype="text/plain"
+          >
+            <label class="sr-only" for="newsletter-email">Email</label>
+            <input
+              id="newsletter-email"
+              name="subject"
+              type="email"
+              required
+              placeholder="you@email.com"
+              class="form-input form-input-lg flex-1"
+            />
+            <input
+              type="hidden"
+              name="body"
+              value="Please add me to the weekly remote jobs digest."
+            />
+            <button type="submit" class="btn-primary">Subscribe</button>
+          </form>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-[var(--rd-border)] mt-8">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-          <div class="lg:col-span-1">
-            <p class="font-display font-semibold mb-2">remotedevelopers</p>
-            <p class="text-muted text-sm leading-relaxed">
-              Made for developers by developers.
-            </p>
-          </div>
-          <div>
-            <p class="font-semibold text-sm mb-3">Explore</p>
-            <ul class="space-y-2 text-sm text-muted">
-              <li>
-                <a href="/jobs.html" class="hover:text-accent-teal">Jobs</a>
-              </li>
-              <li>
-                <a href="/companies.html" class="hover:text-accent-teal"
-                  >Companies</a
-                >
-              </li>
-              <li>
-                <a href="/blog.html" class="hover:text-accent-teal">Blog</a>
-              </li>
-              <li>
-                <a href="/about.html" class="hover:text-accent-teal">About</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-sm mb-3">Employers</p>
-            <ul class="space-y-2 text-sm text-muted">
-              <li>
-                <a
-                  href="/post-job.html"
-                  class="hover:text-accent-teal"
-                  target="_blank"
-                  rel="noopener"
-                  >Post a Job – $5</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-sm mb-3">Legal</p>
-            <ul class="space-y-2 text-sm text-muted">
-              <li>
-                <a href="/privacy.html" class="hover:text-accent-teal"
-                  >Privacy</a
-                >
-              </li>
-              <li>
-                <a href="/terms.html" class="hover:text-accent-teal">Terms</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="text-muted text-xs leading-relaxed max-w-3xl mb-4">
-          Job posts are manually reviewed and added. For instant posting contact
-          us. Some jobs are syndicated from partner boards.
-        </p>
-        <p class="text-muted text-sm">
-          © 2026 remotedevelopers. All rights reserved.
-        </p>
-      </div>
-    </footer>
-
+    <div data-rd-footer></div>
+    <script>
+      window.RDChrome && window.RDChrome.mount();
+    </script>
     <script src="/js/theme.js"></script>
+    <script src="/js/ui.js"></script>
     <script src="/js/jobs-data.js"></script>
     <script src="/js/jobs-utils.js"></script>
     <script src="/js/jobs-api.js"></script>

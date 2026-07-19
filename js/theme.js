@@ -1,5 +1,5 @@
 /**
- * Theme: light by default, dark via removing html.light, persisted in localStorage.
+ * Theme: dark by default, light via html.light, persisted in localStorage.
  */
 (function () {
   const KEY = "rd-theme";
@@ -23,7 +23,8 @@
 
   function init() {
     const stored = getStored();
-    applyTheme(stored === "dark" ? "dark" : "light");
+    // Dark is default; only switch to light when explicitly stored
+    applyTheme(stored === "light" ? "light" : "dark");
   }
 
   function toggle() {

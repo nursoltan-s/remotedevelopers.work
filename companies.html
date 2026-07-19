@@ -26,16 +26,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/400.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/500.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/600.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/700.css" rel="stylesheet" />
     <script>
       try {
-        if (localStorage.getItem("rd-theme") !== "dark")
+        if (localStorage.getItem("rd-theme") === "light")
           document.documentElement.classList.add("light");
-      } catch (e) {
-        document.documentElement.classList.add("light");
-      }
+      } catch (e) {}
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -43,12 +45,12 @@
         theme: {
           extend: {
             colors: {
-              navy: { DEFAULT: "#0A2540", mid: "#0f3558", light: "#163a5c" },
-              accent: { teal: "#14B8A6", cyan: "#22D3EE" },
+              navy: { DEFAULT: "#0B1220", mid: "#111827", light: "#1F2937" },
+              accent: { teal: "#3B82F6", cyan: "#6366F1" },
             },
             fontFamily: {
-              display: ["Sora", "system-ui", "sans-serif"],
-              sans: ["DM Sans", "system-ui", "sans-serif"],
+              display: ["Geist Sans", "Inter", "system-ui", "sans-serif"],
+              sans: ["Geist Sans", "Inter", "system-ui", "sans-serif"],
             },
           },
         },
@@ -57,149 +59,8 @@
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body class="antialiased">
-    <header class="nav-glass sticky top-0 z-50">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="flex h-16 items-center justify-between gap-4">
-          <a href="/" class="flex items-center shrink-0">
-            <img
-              src="/assets/logo-nav.png"
-              alt="remotedevelopers.work"
-              class="h-8 sm:h-9 w-auto"
-              width="183"
-              height="40"
-            />
-          </a>
-          <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
-            <a
-              href="/"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Home</a
-            >
-            <a
-              href="/jobs.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Jobs</a
-            >
-            <a
-              href="/post-job.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Post a Job</a
-            >
-            <a
-              href="/companies.html"
-              class="px-3 py-2 text-sm font-medium text-accent-cyan"
-              >Companies</a
-            >
-            <a
-              href="/blog.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >Blog</a
-            >
-            <a
-              href="/about.html"
-              class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)] transition-colors"
-              >About</a
-            >
-          </nav>
-          <div class="flex items-center gap-2">
-            <button
-              type="button"
-              data-theme-toggle
-              class="btn-secondary !p-2.5"
-              aria-label="Toggle dark and light mode"
-            >
-              <svg
-                class="theme-icon-moon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.75"
-                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
-                />
-              </svg>
-              <svg
-                class="theme-icon-sun h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.75"
-                  d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
-            </button>
-            <a href="/post-job.html" class="btn-primary !py-2 !px-3 text-sm hidden sm:inline-flex"
-               target="_blank" rel="noopener">Post a Job – $5</a>
-            <button
-              type="button"
-              class="btn-secondary !p-2.5 lg:hidden"
-              data-mobile-menu
-              aria-expanded="false"
-              aria-controls="mobile-nav"
-              aria-label="Open menu"
-            >
-              <svg
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <nav
-          id="mobile-nav"
-          data-mobile-nav
-          class="hidden lg:hidden pb-4 border-t border-[var(--rd-border)] pt-3"
-          aria-label="Mobile"
-        >
-          <div class="flex flex-col gap-1">
-            <a href="/" class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Home</a
-            >
-            <a
-              href="/jobs.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Jobs</a
-            >
-            <a
-              href="/post-job.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Post a Job</a
-            >
-            <a
-              href="/companies.html"
-              class="px-3 py-2.5 text-sm font-medium rounded-lg bg-accent-teal/10 text-accent-teal"
-              >Companies</a
-            >
-            <a
-              href="/blog.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >Blog</a
-            >
-            <a
-              href="/about.html"
-              class="px-3 py-2.5 text-sm font-medium text-muted"
-              >About</a
-            >
-          </div>
-        </nav>
-      </div>
-    </header>
+    <div data-rd-header="companies"></div>
+    <script src="/js/chrome.js"></script>
 
     <main id="main" class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
       <div class="max-w-2xl mb-12">
@@ -214,66 +75,11 @@
       ></div>
     </main>
 
-    <footer class="border-t border-[var(--rd-border)] mt-8">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-          <div>
-            <p class="font-display font-semibold mb-2">remotedevelopers</p>
-            <p class="text-muted text-sm">Made for developers by developers.</p>
-          </div>
-          <div>
-            <p class="font-semibold text-sm mb-3">Explore</p>
-            <ul class="space-y-2 text-sm text-muted">
-              <li>
-                <a href="/jobs.html" class="hover:text-accent-teal">Jobs</a>
-              </li>
-              <li>
-                <a href="/companies.html" class="hover:text-accent-teal"
-                  >Companies</a
-                >
-              </li>
-              <li>
-                <a href="/blog.html" class="hover:text-accent-teal">Blog</a>
-              </li>
-              <li>
-                <a href="/about.html" class="hover:text-accent-teal">About</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-sm mb-3">Employers</p>
-            <ul class="space-y-2 text-sm text-muted">
-              <li>
-                <a href="/post-job.html" class="hover:text-accent-teal"
-                   target="_blank" rel="noopener">Post a Job – $5</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-sm mb-3">Legal</p>
-            <ul class="space-y-2 text-sm text-muted">
-              <li>
-                <a href="/privacy.html" class="hover:text-accent-teal"
-                  >Privacy</a
-                >
-              </li>
-              <li>
-                <a href="/terms.html" class="hover:text-accent-teal">Terms</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="text-muted text-xs max-w-3xl mb-4">
-          Job posts are manually reviewed and added. For instant posting contact
-          us.
-        </p>
-        <p class="text-muted text-sm">
-          © 2026 remotedevelopers. All rights reserved.
-        </p>
-      </div>
-    </footer>
+    <div data-rd-footer></div>
+    <script>window.RDChrome && window.RDChrome.mount();</script>
 
     <script src="/js/theme.js"></script>
+    <script src="/js/ui.js"></script>
     <script src="/js/jobs-data.js"></script>
     <script src="/js/jobs-utils.js"></script>
     <script>

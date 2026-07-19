@@ -105,7 +105,7 @@ window.RDJobs = (function () {
     const logoSrc = job.logo || companyLogoUrl(matched);
     const fallback = initials(job.company);
     const logoInner = logoSrc
-      ? `<img src="${escapeAttr(logoSrc)}" alt="" loading="lazy" width="44" height="44" data-fallback="${escapeAttr(fallback)}" onerror="this.onerror=null;var p=this.parentElement;p.textContent=this.dataset.fallback;this.remove();" />`
+      ? `<img src="${escapeAttr(logoSrc)}" alt="" loading="lazy" width="48" height="48" data-fallback="${escapeAttr(fallback)}" onerror="this.onerror=null;var p=this.parentElement;p.textContent=this.dataset.fallback;this.remove();" />`
       : escapeHtml(fallback);
     const featuredBadge =
       showFeatured && job.featured
@@ -126,47 +126,47 @@ window.RDJobs = (function () {
       .map((t) => `<span class="tag-chip">${escapeHtml(t)}</span>`)
       .join("");
 
+    const location = job.location || "Remote Worldwide";
     const anim = animate ? " fade-up" : "";
     const detailUrl = jobDetailUrl(job);
 
     return `
-      <article class="job-card p-5${anim}" data-job-id="${escapeAttr(job.id)}">
-        <div class="flex items-center justify-between gap-3 mb-3">
-          <div class="flex flex-wrap items-center gap-2 min-w-0">
-            ${featuredBadge}
+      <article class="job-card p-6 sm:p-7${anim}" data-job-id="${escapeAttr(job.id)}">
+        <div class="flex flex-col gap-5">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex items-start gap-4 min-w-0">
+              <a href="${escapeAttr(detailUrl)}" class="logo-mark !w-12 !h-12" aria-hidden="true">${logoInner}</a>
+              <div class="min-w-0">
+                <p class="text-sm font-medium text-muted mb-1">
+                  ${escapeHtml(job.company)}
+                  ${partnerNote ? ` · ${partnerNote}` : ""}
+                </p>
+                <h3 class="font-display text-xl sm:text-2xl font-semibold leading-snug">
+                  <a href="${escapeAttr(detailUrl)}" class="hover:text-[var(--rd-primary)] transition-colors">
+                    ${escapeHtml(job.title)}
+                  </a>
+                </h3>
+              </div>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              ${featuredBadge}
+              <time class="text-muted text-xs" datetime="${escapeAttr(job.postedAt)}">Posted ${relativeTime(job.postedAt)}</time>
+            </div>
           </div>
-          <time class="text-muted text-xs shrink-0" datetime="${escapeAttr(job.postedAt)}">${relativeTime(job.postedAt)}</time>
-        </div>
-        <div class="flex flex-col sm:flex-row sm:items-start gap-4">
-          <a href="${escapeAttr(detailUrl)}" class="logo-mark" aria-hidden="true">${logoInner}</a>
-          <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-2 mb-1">
-              <h3 class="font-display text-lg font-semibold truncate">
-                <a href="${escapeAttr(detailUrl)}" class="hover:text-accent-teal transition-colors">
-                  ${escapeHtml(job.title)}
-                </a>
-              </h3>
-            </div>
-            <p class="text-muted text-sm mb-3">
-              ${escapeHtml(job.company)}
-              ${partnerNote ? ` · ${partnerNote}` : ""}
-            </p>
-            <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="badge-remote">🌍 Remote</span>
-              ${salary}
-              <span class="tag-chip">${escapeHtml(job.type)}</span>
-              <span class="tag-chip">${escapeHtml(job.level)}</span>
-            </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="badge-remote">Remote Worldwide</span>
+            ${salary}
+            <span class="tag-chip">${escapeHtml(location)}</span>
+            ${job.level ? `<span class="tag-chip">${escapeHtml(job.level)}</span>` : ""}
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap gap-1.5">${tags}</div>
-          </div>
-          <div class="flex flex-col gap-2 self-start sm:self-start shrink-0">
-            <a class="btn-apply" href="${escapeAttr(detailUrl)}">View</a>
             <a
               class="btn-apply"
               href="${escapeAttr(job.applyUrl)}"
               target="_blank"
               rel="noopener noreferrer"
-            >Apply</a>
+            >Apply <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </article>

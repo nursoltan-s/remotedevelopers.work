@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>remotedevelopers — Remote Developer Jobs</title>
+    <link>https://remotedevelopers.work/</link>
+    <description>Curated remote-only developer jobs. Updated daily.</description>
+    <language>en-us</language>
+    <item>
+      <title>Latest remote developer jobs</title>
+      <link>https://remotedevelopers.work/jobs.html</link>
+      <description>Browse curated remote engineering roles.</description>
+      <guid>https://remotedevelopers.work/jobs.html</guid>
+    </item>
+    <item>
+      <title>Remote guides</title>
+      <link>https://remotedevelopers.work/guides.html</link>
+      <description>Guides for remote developer careers.</description>
+      <guid>https://remotedevelopers.work/guides.html</guid>
+    </item>
+  </channel>
+</rss>

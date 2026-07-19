@@ -21,16 +21,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/400.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/500.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/600.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.2.5/700.css" rel="stylesheet" />
     <script>
       try {
-        if (localStorage.getItem("rd-theme") !== "dark")
+        if (localStorage.getItem("rd-theme") === "light")
           document.documentElement.classList.add("light");
-      } catch (e) {
-        document.documentElement.classList.add("light");
-      }
+      } catch (e) {}
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,12 +40,12 @@
         theme: {
           extend: {
             colors: {
-              navy: { DEFAULT: "#0A2540", mid: "#0f3558", light: "#163a5c" },
-              accent: { teal: "#14B8A6", cyan: "#22D3EE" },
+              navy: { DEFAULT: "#0B1220", mid: "#111827", light: "#1F2937" },
+              accent: { teal: "#3B82F6", cyan: "#6366F1" },
             },
             fontFamily: {
-              display: ["Sora", "system-ui", "sans-serif"],
-              sans: ["DM Sans", "system-ui", "sans-serif"],
+              display: ["Geist Sans", "Inter", "system-ui", "sans-serif"],
+              sans: ["Geist Sans", "Inter", "system-ui", "sans-serif"],
             },
           },
         },
@@ -54,30 +56,8 @@
   </head>
   <body class="antialiased">
     
-    <header class="nav-glass sticky top-0 z-50">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="flex h-16 items-center justify-between gap-4">
-          <a href="/" class="flex items-center shrink-0">
-            <img src="/assets/logo-nav.png" alt="remotedevelopers.work" class="h-8 sm:h-9 w-auto" width="183" height="40" />
-          </a>
-          <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
-            <a href="/" class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)]">Home</a>
-            <a href="/jobs.html" class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)]">Jobs</a>
-            <a href="/post-job.html" class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)]">Post a Job</a>
-            <a href="/companies.html" class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)]">Companies</a>
-            <a href="/blog.html" class="px-3 py-2 text-sm font-medium text-accent-cyan">Blog</a>
-            <a href="/about.html" class="px-3 py-2 text-sm font-medium text-muted hover:text-[var(--rd-text)]">About</a>
-          </nav>
-          <div class="flex items-center gap-2">
-            <button type="button" data-theme-toggle class="btn-secondary !p-2.5" aria-label="Toggle dark and light mode">
-              <svg class="theme-icon-moon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
-              <svg class="theme-icon-sun h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-            </button>
-            <a href="/post-job.html" class="btn-primary !py-2 !px-3 text-sm hidden sm:inline-flex">Post a Job – $5</a>
-          </div>
-        </div>
-      </div>
-    </header>
+    <div data-rd-header="guides"></div>
+    <script src="/js/chrome.js"></script>
     <main id="main" class="mx-auto max-w-3xl px-4 sm:px-6 py-10 sm:py-14">
       <nav class="text-sm text-muted mb-6" aria-label="Breadcrumb">
         <a href="/blog.html" class="hover:text-accent-teal">Blog</a>
@@ -146,17 +126,10 @@
       </aside>
     </main>
     
-    <footer class="border-t border-[var(--rd-border)] mt-8">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 py-10">
-        <p class="text-muted text-sm mb-2">Made for developers by developers.</p>
-        <p class="text-muted text-sm">
-          © 2026 remotedevelopers ·
-          <a href="/blog.html" class="hover:text-accent-teal">Blog</a> ·
-          <a href="/jobs.html" class="hover:text-accent-teal">Jobs</a>
-        </p>
-      </div>
-    </footer>
+    <div data-rd-footer></div>
+    <script>window.RDChrome && window.RDChrome.mount();</script>
     <script src="/js/theme.js"></script>
+    <script src="/js/ui.js"></script>
     <script src="/js/analytics-config.js"></script>
     <script src="/js/analytics.js"></script>
   </body>
