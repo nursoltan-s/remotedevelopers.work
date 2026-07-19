@@ -9,6 +9,8 @@
     "sync-jobs": "node scripts/sync-jobs.mjs",
     "prune-jobs": "node scripts/prune-jobs.mjs",
     "generate-jobs": "node -e \"import('./scripts/lib/io.mjs').then(m => { m.generateJobsDataJs(); console.log('Regenerated js/jobs-data.js'); })\"",
+    "generate-job-pages": "node scripts/generate-job-pages.mjs",
+    "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "generate-blog": "node scripts/generate-blog.mjs",
     "generate-pages": "node scripts/generate-redesign-pages.mjs",
     "deploy": "wrangler pages deploy . --project-name=remotedevelopers-work --branch=production --commit-dirty=true"

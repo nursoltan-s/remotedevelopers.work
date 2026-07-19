@@ -8,7 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-
+import { writeSitemap } from "./lib/write-sitemap.mjs";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const sitemapUrls = [];
@@ -831,45 +831,7 @@ fs.writeFileSync(
 );
 console.log("wrote feed.xml");
 
-// Core pages for sitemap (not generated above)
-const coreSitemap = [
-  "/",
-  "/jobs.html",
-  "/companies.html",
-  "/about.html",
-  "/blog.html",
-  "/post-job.html",
-  "/privacy.html",
-  "/terms.html",
-];
-const allUrls = [...new Set([...coreSitemap, ...sitemapUrls])].sort();
-const today = new Date().toISOString().slice(0, 10);
-fs.writeFileSync(
-  path.join(root, "sitemap.xml"),
-  `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allUrls
-  .map(
-    (u) => `  <url>
-    <loc>https://remotedevelopers.work${u === "/" ? "/" : u}</loc>
-    <lastmod>${today}</lastmod>
-  </url>`,
-  )
-  .join("\n")}
-</urlset>
-`,
-);
-console.log(`wrote sitemap.xml (${allUrls.length} urls)`);
-
-// robots.txt
-fs.writeFileSync(
-  path.join(root, "robots.txt"),
-  `User-agent: *
-Allow: /
-
-Sitemap: https://remotedevelopers.work/sitemap.xml
-`,
-);
-console.log("wrote robots.txt");
+const n = writeSitemap();
+console.log(`wrote sitemap.xml (${n} urls) + robots.txt`);
 
 console.log(`\nDone. Generated ${sitemapUrls.length} landing/hub URLs.`);

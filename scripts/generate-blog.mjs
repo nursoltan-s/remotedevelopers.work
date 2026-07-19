@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import vm from "vm";
-
+import { writeSitemap } from "./lib/write-sitemap.mjs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const BLOG_DIR = join(ROOT, "blog");
@@ -222,42 +222,6 @@ function main() {
   }
 
   // Cloudflare Pages serves /blog/slug from blog/slug.html automatically
-  const urls = [
-    "",
-    "jobs.html",
-    "post-job.html",
-    "companies.html",
-    "blog.html",
-    "about.html",
-    "privacy.html",
-    "terms.html",
-    ...posts.map((p) => `blog/${p.slug}`),
-  ];
-
-  const lastmod = new Date().toISOString().slice(0, 10);
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
-  .map(
-    (u) => `  <url>
-    <loc>${SITE}/${u}</loc>
-    <lastmod>${lastmod}</lastmod>
-  </url>`
-  )
-  .join("\n")}
-</urlset>
-`;
-  writeFileSync(join(ROOT, "sitemap.xml"), sitemap);
-
-  writeFileSync(
-    join(ROOT, "robots.txt"),
-    `User-agent: *
-Allow: /
-
-Sitemap: ${SITE}/sitemap.xml
-`
-  );
-
   // Inject static cards into blog.html for SEO (no JS required)
   const blogIndexPath = join(ROOT, "blog.html");
   let blogIndex = readFileSync(blogIndexPath, "utf8");
@@ -293,7 +257,8 @@ Sitemap: ${SITE}/sitemap.xml
   );
   writeFileSync(blogIndexPath, blogIndex);
 
-  console.log(`Generated ${posts.length} posts + sitemap.xml + robots.txt + blog.html`);
+  const n = writeSitemap();
+  console.log(`Generated ${posts.length} posts + blog.html; sitemap ${n} urls`);
 }
 
 main();

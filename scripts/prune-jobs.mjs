@@ -8,7 +8,8 @@
  *
  * Console logs how many jobs were removed.
  */
-import { generateJobsDataJs, loadJobs, saveJobs } from "./lib/io.mjs";
+import { loadJobs, saveJobs } from "./lib/io.mjs";
+import { generateJobPages } from "./generate-job-pages.mjs";
 
 const ONE_YEAR_MS = 365 * 24 * 60 * 60 * 1000;
 
@@ -42,8 +43,6 @@ function main() {
   }
 
   saveJobs(kept);
-  // ensure generate even if saveJobs already does — idempotent
-  generateJobsDataJs();
 
   console.log(`[prune] Jobs removed: ${removed.length}`);
   if (removed.length) {
@@ -57,6 +56,11 @@ function main() {
   }
   console.log(`[prune] Jobs remaining: ${kept.length}`);
   console.log("[prune] Updated data/jobs.json and js/jobs-data.js");
+
+  const pages = generateJobPages();
+  console.log(
+    `[prune] Regenerated ${pages.count} static job pages (removed ${pages.removed} stale HTML)`,
+  );
 }
 
 try {

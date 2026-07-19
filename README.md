@@ -86,11 +86,17 @@ npm run prune-jobs
 
 # Regenerate js/jobs-data.js from data/*.json only
 npm run generate-jobs
+
+# Generate static SEO pages for every job (also runs after sync/prune)
+npm run generate-job-pages
+
+# Refresh sitemap.xml from hubs + blog + jobs on disk
+npm run generate-sitemap
 ```
 
 Partner sources: Remote OK, Jobicy, Arbeitnow, Himalayas.
 
-Open any listing via `/job.html?id=<job-id>`. The detail page calls `RDJobsAPI.fetchJobDetail(jobId)` to re-fetch the full description from Remote OK, Jobicy, Arbeitnow, or Himalayas (via `/api/himalayas?mode=search`).
+Each job gets a crawlable page at `/jobs/<slug>` (HTML under `jobs/`). Old links to `/job.html?id=<job-id>` redirect to the slug URL. Job cards and the sitemap use the slug URLs so Google can index title, description, and JobPosting schema from the initial HTML.
 
 The jobs board merges curated sample jobs with free public APIs:
 
@@ -125,7 +131,7 @@ Posts live in [`js/blog-data.js`](js/blog-data.js). Regenerate static SEO pages:
 npm run generate-blog
 ```
 
-That writes `blog/<slug>.html`, updates the cards on `blog.html`, and refreshes `sitemap.xml` / `robots.txt`.
+That writes `blog/<slug>.html`, updates the cards on `blog.html`, and refreshes the unified `sitemap.xml` / `robots.txt` (includes hubs, blog, and job pages).
 
 ## Deploy
 

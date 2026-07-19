@@ -12,14 +12,9 @@
  *
  * Console logs how many new jobs were created.
  */
-import {
-  dedupeKey,
-  generateJobsDataJs,
-  jobKey,
-  loadJobs,
-  saveJobs,
-} from "./lib/io.mjs";
+import { dedupeKey, jobKey, loadJobs, saveJobs } from "./lib/io.mjs";
 import { fetchAllPartnerJobs } from "./lib/fetch-partners.mjs";
+import { generateJobPages } from "./generate-job-pages.mjs";
 
 async function main() {
   console.log("[sync] Loading existing static jobs…");
@@ -61,6 +56,11 @@ async function main() {
   }
   console.log(`[sync] Total jobs on site: ${merged.length}`);
   console.log("[sync] Updated data/jobs.json and js/jobs-data.js");
+
+  const pages = generateJobPages();
+  console.log(
+    `[sync] Generated ${pages.count} static job pages (sitemap: ${pages.sitemapCount} urls)`,
+  );
 }
 
 main().catch((err) => {

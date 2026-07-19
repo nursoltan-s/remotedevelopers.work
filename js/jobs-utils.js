@@ -71,9 +71,9 @@ window.RDJobs = (function () {
   }
 
   function jobDetailUrl(job) {
+    if (job?.slug) return `/jobs/${encodeURIComponent(job.slug)}`;
     const id = encodeURIComponent(String(job?.id ?? ""));
-    // Include hash as backup: some static servers (cleanUrls) redirect
-    // /job.html?id=… → /job and drop the query string; browsers keep the hash.
+    // Legacy fallback for jobs without a slug (pre-generation / ephemeral API rows)
     return `/job.html?id=${id}#${id}`;
   }
 
@@ -187,7 +187,7 @@ window.RDJobs = (function () {
 
   function buildJobPostingSchema(jobs) {
     const items = (jobs || [])
-      .filter((j) => j.source === "curated" && j.applyUrl)
+      .filter((j) => j.applyUrl || j.slug)
       .slice(0, 10)
       .map((job) => {
         const schema = {
@@ -205,7 +205,10 @@ window.RDJobs = (function () {
             "@type": "Country",
             name: "Worldwide",
           },
-          url: job.applyUrl,
+          // Prefer on-site indexable URL when available
+          url: job.slug
+            ? `https://remotedevelopers.work/jobs/${job.slug}`
+            : job.applyUrl,
         };
         if (job.salary && job.salaryMin) {
           schema.baseSalary = {
