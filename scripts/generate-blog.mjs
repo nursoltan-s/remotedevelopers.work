@@ -80,6 +80,8 @@ function headShell({ title, description, canonical, keywords, jsonLd }) {
       };
     </script>
     <link rel="stylesheet" href="/css/styles.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1570747115569078"
+     crossorigin="anonymous"></script>
     <script type="application/ld+json">${jsonLd}</script>
   </head>`;
 }

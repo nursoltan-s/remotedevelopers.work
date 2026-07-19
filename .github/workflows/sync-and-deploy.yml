@@ -1,0 +1,29 @@
+name: Sync jobs and deploy
+
+on:
+  schedule:
+    # Every hour at minute 17 UTC (avoids top-of-hour queue congestion)
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+jobs:
+  sync-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run sync-jobs
+
+      - run: npm run generate-jobs
+
+      - name: Deploy to Cloudflare Pages
+        run: npm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
