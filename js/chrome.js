@@ -195,8 +195,8 @@
               <li><a href="/about.html" class="hover:text-[var(--rd-primary)]">About</a></li>
               <li><a href="/contact.html" class="hover:text-[var(--rd-primary)]">Contact</a></li>
               <li><a href="/post-job.html" class="hover:text-[var(--rd-primary)]">Post a Job</a></li>
-              <li><a href="/privacy.html" class="hover:text-[var(--rd-primary)]">Privacy</a></li>
-              <li><a href="/terms.html" class="hover:text-[var(--rd-primary)]">Terms</a></li>
+              <li><a href="/privacy.html" class="hover:text-[var(--rd-primary)]">Privacy Policy</a></li>
+              <li><a href="/terms.html" class="hover:text-[var(--rd-primary)]">Terms &amp; Conditions</a></li>
             </ul>
           </div>
           <div>

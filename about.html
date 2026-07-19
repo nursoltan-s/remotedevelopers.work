@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About — RemoteDevelopers</title>
+    <title>About Us — remotedevelopers</title>
     <meta
       name="description"
-      content="remotedevelopers is a hand-curated job board for remote engineers, designers, and tech leaders. Made for developers by developers."
+      content="remotedevelopers is a curated, remote-only job board for engineers. Developer-first listings with transparent pay and real remote policies."
     />
-    <link rel="canonical" href="https://remotedevelopers/about.html" />
+    <link rel="canonical" href="https://remotedevelopers.work/about.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://remotedevelopers/about.html" />
-    <meta property="og:title" content="About remotedevelopers" />
+    <meta property="og:url" content="https://remotedevelopers.work/about.html" />
+    <meta property="og:title" content="About Us — remotedevelopers" />
     <meta
       property="og:description"
-      content="Hand-curated remote jobs. Made for developers by developers."
+      content="Curated. Remote-only. Developer-first. Learn why we built remotedevelopers."
     />
     <meta
       property="og:image"
-      content="https://remotedevelopers/assets/og-image.svg"
+      content="https://remotedevelopers.work/assets/og-image.svg"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
@@ -65,42 +65,95 @@
     <script src="/js/chrome.js"></script>
 
     <main id="main" class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
-      <h1 class="text-display-lg font-display mb-6">About</h1>
-      <div class="prose-like space-y-5 text-muted leading-relaxed">
-        <p class="text-[var(--rd-text)] text-lg">
-          remotedevelopers is the best place for remote developer jobs —
-          curated, remote-only, and developer-first.
+      <article data-reveal>
+        <h1 class="text-display-lg font-display mb-4">About Us</h1>
+        <p class="text-muted text-lg leading-relaxed mb-10">
+          remotedevelopers is a curated job board for remote engineers —
+          nothing else.
         </p>
-        <p>
-          We curate listings with transparent pay when possible, real remote
-          policies, and roles that respect timezone flexibility. No hybrid or
-          on-site noise. Paid posts are reviewed by hand so the feed stays
-          useful instead of becoming another spam sink.
+
+        <div class="space-y-8 text-muted leading-relaxed">
+          <section>
+            <h2 class="font-display font-semibold text-xl text-[var(--rd-text)] mb-3">
+              Why we exist
+            </h2>
+            <p>
+              Most job boards bury remote roles under hybrid noise, recruiter
+              spam, and vague “work from anywhere” posts that still expect you
+              in an office three days a week. We built remotedevelopers for
+              developers who want verified remote work — with transparent pay
+              when possible, clear timezone expectations, and listings worth
+              your time.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-display font-semibold text-xl text-[var(--rd-text)] mb-3">
+              What we curate
+            </h2>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>Remote-only engineering roles — no hybrid or on-site filler</li>
+              <li>Salary bands when employers share them</li>
+              <li>Paid posts reviewed by hand before they go live</li>
+              <li>
+                Partner listings from boards like Himalayas, Remote OK, Jobicy,
+                and Arbeitnow — clearly marked as syndicated
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="font-display font-semibold text-xl text-[var(--rd-text)] mb-3">
+              For employers
+            </h2>
+            <p>
+              Post a job for a flat
+              <strong class="text-[var(--rd-text)]">$5 one-time</strong> fee. No
+              monthly plans, no seat limits. Listings are reviewed (usually
+              within 24 hours) so the feed stays useful for candidates.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-display font-semibold text-xl text-[var(--rd-text)] mb-3">
+              Get in touch
+            </h2>
+            <p>
+              Questions about a listing, partnership, or the site? Email
+              <a
+                class="text-[var(--rd-primary)] font-medium hover:underline"
+                href="mailto:hello@remotedevelopers.work"
+                >hello@remotedevelopers.work</a
+              >
+              or visit our
+              <a class="text-[var(--rd-primary)] font-medium hover:underline" href="/contact.html"
+                >contact page</a
+              >.
+            </p>
+          </section>
+        </div>
+
+        <p class="mt-10 text-[var(--rd-text)] font-medium">
+          Curated. Remote-only. Developer-first.
         </p>
-        <p>
-          Partner listings from boards like Himalayas, Remote OK, Jobicy, and
-          Arbeitnow appear alongside curated roles and are clearly marked.
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/jobs.html" class="btn-primary">Browse Jobs</a>
+          <a href="/post-job.html" class="btn-secondary">Post a Job</a>
+        </div>
+
+        <p class="mt-12 text-sm text-muted">
+          <a class="hover:text-[var(--rd-primary)]" href="/privacy.html">Privacy Policy</a>
+          <span class="mx-2">·</span>
+          <a class="hover:text-[var(--rd-primary)]" href="/terms.html">Terms &amp; Conditions</a>
         </p>
-        <p>
-          Employers can post for a flat
-          <strong class="text-[var(--rd-text)]">$5 one-time</strong> fee. No
-          monthly plans. Listings go live after review (usually within 24
-          hours).
-        </p>
-        <p>Curated. Remote-only. Developer-first.</p>
-      </div>
-      <div class="mt-10 flex flex-wrap gap-3">
-        <a href="/jobs.html" class="btn-primary">Browse Jobs</a>
-        <a href="/post-job.html" class="btn-secondary">Post a Job</a>
-      </div>
+      </article>
     </main>
 
     <div data-rd-footer></div>
     <script>window.RDChrome && window.RDChrome.mount();</script>
-
     <script src="/js/theme.js"></script>
     <script src="/js/ui.js"></script>
-    <script src="https://gumroad.com/js/gumroad.js"></script>
     <script src="/js/analytics-config.js"></script>
     <script src="/js/analytics.js"></script>
   </body>
