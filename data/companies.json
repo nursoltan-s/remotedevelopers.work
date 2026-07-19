@@ -149,5 +149,12 @@
     "initials": "Ca",
     "domain": "cal.com",
     "url": "https://cal.com"
+  },
+  {
+    "name": "Turing",
+    "initials": "Tu",
+    "domain": "turing.com",
+    "logo": "/assets/logos/turing.png",
+    "url": "https://www.turing.com"
   }
 ]

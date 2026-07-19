@@ -1,5 +1,31 @@
 [
   {
+    "id": "cur-tur-001",
+    "title": "JavaScript / TypeScript Full-Stack Developer",
+    "company": "Turing",
+    "logo": "/assets/logos/turing.png",
+    "salary": "Referral Bonus · $150",
+    "salaryMin": 0,
+    "location": "Remote",
+    "type": "Contract",
+    "level": "Mid",
+    "tags": [
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "Nest.js",
+      "React",
+      "Vue.js",
+      "Angular"
+    ],
+    "applyUrl": "https://work.turing.com/r/8KVNsolaXP",
+    "featured": true,
+    "source": "curated",
+    "postedAt": "2026-07-19T12:00:00Z",
+    "description": "JavaScript / TypeScript Full-Stack Developer at Turing. Remote contractor role building and evaluating AI systems with JS/TS, Node.js, Nest.js, React, Vue, and Angular. Referral bonus $150. Minimum 20 hrs/week with PST overlap.",
+    "descriptionHtml": "\n      <p><strong>About Turing:</strong></p>\n      <p>Turing is one of the world’s fastest-growing AI companies accelerating the advancement and deployment of powerful AI systems.</p>\n      <p>Turing helps customers in two ways: Working with the world’s leading AI labs to advance frontier model capabilities in thinking, reasoning, coding, agentic behavior, multimodality, multilinguality, STEM and frontier knowledge; and leveraging that work to build real-world AI systems that solve mission-critical priorities for companies.</p>\n      <h3>Role Overview</h3>\n      <p>We are actively seeking talented developers proficient in Javascript/Typescript to join our ambitious team dedicated to pushing the frontiers of AI technology. This opportunity is tailored for professionals who thrive on developing innovative solutions and aspire to be at the forefront of AI advancements. You will work with different companies in the US who are looking to develop cutting-edge commercial and research AI solutions.</p>\n      <h3>What does day-to-day look like</h3>\n      <ul>\n        <li>Design, develop, and maintain efficient, high-quality code to train and optimize AI models.</li>\n        <li>Conduct evaluations (Evals) to benchmark model performance and analyze results for continuous improvement.</li>\n        <li>Evaluate and rank AI model responses to user queries across diverse domains, ensuring alignment with predefined criteria.</li>\n        <li>Develop comprehensive explanations and rationales for evaluations, showcasing excellent reasoning and technical expertise.</li>\n        <li>Lead efforts in Supervised Fine-Tuning (SFT), including creating and maintaining high-quality, task-specific datasets.</li>\n        <li>Collaborate with researchers and annotators to execute Reinforcement Learning with Human Feedback (RLHF) and refine reward models.</li>\n        <li>Design innovative evaluation strategies and processes to improve the model's alignment with user needs and ethical guidelines.</li>\n        <li>Create and refine optimal responses to improve AI performance, emphasizing clarity, relevance, and technical accuracy.</li>\n        <li>Conduct thorough peer reviews of code and documentation, providing constructive feedback and identifying areas for improvement.</li>\n        <li>Collaborate with cross-functional teams to improve model performance and contribute to product enhancements.</li>\n        <li>Continuously explore and integrate new tools, techniques, and methodologies to enhance AI training processes.</li>\n      </ul>\n      <h3>Required Skills</h3>\n      <ul>\n        <li>Write readable, reusable, and maintainable code</li>\n        <li>Participate in code reviews to ensure that the standards for code quality are met</li>\n        <li>Demonstrate your proficiency with your language of choice, while covering all bases</li>\n        <li>Provide clear, clean, well-organized, correct, and clearly annotated/classifiable code in the responses</li>\n        <li>Bachelor’s/Master’s degree in Engineering, Computer Science (or equivalent experience)</li>\n        <li>Demonstrable experience with developing web apps using modular development and scalable architectures as well as a strong focus on code readability and security/stability (i.e. testing)</li>\n        <li>Proficiency with the language's syntax and conventions</li>\n        <li>Extensive experience working with JavaScript or TypeScript</li>\n        <li>Solid understanding of JavaScript ES6 and either Node.js or React or Nest or Angular or Vue</li>\n        <li>Nice to have some prior software Quality Assurance and Test Planning experience</li>\n        <li>Excellent spoken and written English communication skills</li>\n        <li>Docker experience</li>\n      </ul>\n      <h3>Technologies</h3>\n      <ul>\n        <li><strong>Back-end:</strong> Nest.js, Node.js</li>\n        <li><strong>Front-end:</strong> Vue, Angular, React</li>\n        <li><strong>Languages:</strong> JavaScript &amp; Typescript</li>\n      </ul>\n      <h3>Perks of Freelancing With Turing</h3>\n      <ul>\n        <li>Work in a fully remote environment.</li>\n        <li>Opportunity to work on cutting-edge AI projects with leading LLM companies.</li>\n      </ul>\n      <h3>Offer Details</h3>\n      <ul>\n        <li><strong>Commitments Required:</strong> at least 4 hours per day and minimum 20 hours per week with overlap of 4 hours with PST. (We have 3 options of time commitment: 20 hrs/week, 30 hrs/week or 40 hrs/week)</li>\n        <li><strong>Engagement type:</strong> Contractor assignment (no medical/paid leave)</li>\n        <li><strong>Duration of contract:</strong> 1 month; [expected start date is next week]</li>\n      </ul>\n      <h3>Evaluation Process (approximately 75 mins)</h3>\n      <p>Two rounds of interviews (60 min technical + 15 min cultural &amp; offer discussion)</p>\n    "
+  },
+  {
     "id": "cur-tc-001",
     "title": "Marketing Mix Modeling (MMM) Analyst — Peloton",
     "company": "Topcoder",
