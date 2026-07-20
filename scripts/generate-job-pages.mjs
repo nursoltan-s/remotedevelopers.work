@@ -203,6 +203,7 @@ function headShell({ title, description, canonical, jsonLd }) {
       };
     </script>
     <link rel="stylesheet" href="/css/styles.css" />
+    <meta name="google-adsense-account" content="ca-pub-1570747115569078">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1570747115569078"
      crossorigin="anonymous"></script>
     <script type="application/ld+json">${jsonLd}</script>

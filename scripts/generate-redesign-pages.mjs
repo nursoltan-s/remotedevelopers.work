@@ -61,6 +61,7 @@ function head({ title, description, canonical, active }) {
       };
     </script>
     <link rel="stylesheet" href="/css/styles.css" />
+    <meta name="google-adsense-account" content="ca-pub-1570747115569078">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1570747115569078"
      crossorigin="anonymous"></script>
   </head>

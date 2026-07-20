@@ -93,6 +93,15 @@ window.RDJobs = (function () {
     }
   }
 
+  const NEW_JOB_MS = 12 * 60 * 60 * 1000;
+
+  function isJobNew(job) {
+    if (!job?.postedAt) return false;
+    const posted = new Date(job.postedAt).getTime();
+    if (Number.isNaN(posted)) return false;
+    return Date.now() - posted < NEW_JOB_MS;
+  }
+
   /** Light sanitize for partner HTML descriptions */
   function sanitizeJobHtml(html) {
     return String(html || "")
@@ -114,6 +123,9 @@ window.RDJobs = (function () {
       showFeatured && job.featured
         ? `<span class="badge-featured">Featured</span>`
         : "";
+    const newBadge = isJobNew(job)
+      ? `<span class="badge-new">New ✨</span>`
+      : "";
 
     const partnerNote =
       job.source === "partner" && job.partnerName
@@ -152,7 +164,7 @@ window.RDJobs = (function () {
               </div>
             </div>
             <div class="flex flex-col items-end gap-2 shrink-0">
-              ${featuredBadge}
+              ${featuredBadge}${newBadge}
               <time class="text-muted text-xs" datetime="${escapeAttr(job.postedAt)}">Posted ${relativeTime(job.postedAt)}</time>
             </div>
           </div>
@@ -244,6 +256,7 @@ window.RDJobs = (function () {
     initials,
     relativeTime,
     formatPostedDate,
+    isJobNew,
     findCompany,
     companyLogoUrl,
     logoMarkHTML,

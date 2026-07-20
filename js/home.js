@@ -1,7 +1,9 @@
 /**
- * Homepage: featured jobs, stats, tech counts, search form.
+ * Homepage: latest jobs (infinite scroll), stats, tech counts, search form.
  */
 (function () {
+  const HOME_PAGE_SIZE = 6;
+
   const FEATURED_BRANDS = [
     "GitLab",
     "Shopify",
@@ -32,6 +34,16 @@
     { name: "Java", slug: "java", tags: ["Java", "Spring"] },
   ];
 
+  let loadedCount = HOME_PAGE_SIZE;
+  let renderedCount = 0;
+  let scrollObserver = null;
+
+  function sortedJobs() {
+    return [...(window.RD_JOBS || [])].sort(
+      (a, b) => new Date(b.postedAt) - new Date(a.postedAt),
+    );
+  }
+
   function countByTags(tags) {
     const jobs = window.RD_JOBS || [];
     const lower = tags.map((t) => t.toLowerCase());
@@ -44,21 +56,59 @@
     return window.RDUI?.skeletonCards?.(4) || "";
   }
 
-  async function renderFeatured() {
-    const featuredEl = document.getElementById("home-featured");
-    if (!featuredEl || !window.RDJobs) return;
+  function renderJobsList({ reset = true } = {}) {
+    const listEl = document.getElementById("home-featured");
+    const sentinel = document.getElementById("home-scroll-sentinel");
+    const loadingEl = document.getElementById("home-scroll-loading");
+    if (!listEl || !window.RDJobs) return;
 
-    const featured = (window.RD_JOBS || []).filter((j) => j.featured).slice(0, 6);
-    const cards =
-      featured.length > 0 ? featured : (window.RD_JOBS || []).slice(0, 6);
+    const jobs = sortedJobs();
+    const visible = jobs.slice(0, loadedCount);
+    const hasMore = visible.length < jobs.length;
 
-    featuredEl.innerHTML = cards
-      .map((j) => window.RDJobs.jobCardHTML(j, { animate: true }))
-      .join("");
-
-    if (featured.length) {
-      window.RDJobs.injectSchema(featured);
+    if (reset) {
+      listEl.innerHTML = visible
+        .map((j) => window.RDJobs.jobCardHTML(j, { animate: true }))
+        .join("");
+      renderedCount = visible.length;
+    } else {
+      const newItems = visible.slice(renderedCount);
+      listEl.insertAdjacentHTML(
+        "beforeend",
+        newItems
+          .map((j) => window.RDJobs.jobCardHTML(j, { animate: true }))
+          .join(""),
+      );
+      renderedCount = visible.length;
     }
+
+    if (sentinel) {
+      sentinel.classList.toggle("hidden", !hasMore);
+      if (hasMore && scrollObserver) scrollObserver.observe(sentinel);
+      else if (scrollObserver) scrollObserver.unobserve(sentinel);
+    }
+    loadingEl?.classList.add("hidden");
+  }
+
+  function loadMoreHomeJobs() {
+    const jobs = sortedJobs();
+    if (loadedCount >= jobs.length) return;
+    const loadingEl = document.getElementById("home-scroll-loading");
+    loadingEl?.classList.remove("hidden");
+    loadedCount += HOME_PAGE_SIZE;
+    renderJobsList({ reset: false });
+  }
+
+  function bindHomeInfiniteScroll() {
+    const sentinel = document.getElementById("home-scroll-sentinel");
+    if (!sentinel) return;
+    scrollObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) loadMoreHomeJobs();
+      },
+      { rootMargin: "240px", threshold: 0 },
+    );
+    scrollObserver.observe(sentinel);
   }
 
   function renderBrands() {
@@ -134,6 +184,7 @@
 
     renderBrands();
     bindHomeSearch();
+    bindHomeInfiniteScroll();
 
     try {
       if (window.RDJobsAPI?.loadRemoteJobs) {
@@ -143,7 +194,14 @@
       console.warn("[RD] API load failed", err);
     }
 
-    await renderFeatured();
+    loadedCount = HOME_PAGE_SIZE;
+    renderJobsList({ reset: true });
+
+    const schemaJobs = sortedJobs().slice(0, 6);
+    if (schemaJobs.length) {
+      window.RDJobs.injectSchema(schemaJobs);
+    }
+
     renderTech();
     updateLiveStats();
     window.RDUI?.initReveal?.();

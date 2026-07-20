@@ -1,8 +1,17 @@
 /**
- * Jobs board: search, role/experience radios, salary, tags, pagination.
+ * Jobs board: search, multi-role, experience, salary, tags, date range, infinite scroll.
  */
 (function () {
   const PAGE_SIZE = 9;
+
+  const ROLE_OPTIONS = [
+    "Frontend",
+    "Backend",
+    "Full Stack",
+    "DevOps",
+    "AI",
+    "Data",
+  ];
 
   const ROLE_KEYWORDS = {
     Frontend: ["frontend", "front-end", "front end", "react", "vue", "angular", "ui engineer"],
@@ -16,25 +25,37 @@
   const state = {
     search: "",
     salaryMin: 40000,
-    role: "",
+    roles: new Set(),
     level: "",
     location: "",
     tags: new Set(),
-    page: 1,
+    dateFrom: "",
+    dateTo: "",
+    loadedCount: PAGE_SIZE,
     sourceFilter: "all",
   };
+
+  let scrollObserver = null;
+  let renderedCount = 0;
 
   function allJobs() {
     return window.RD_JOBS || [];
   }
 
-  function matchesRole(job, role) {
-    if (!role) return true;
+  function matchesSingleRole(job, role) {
     const keywords = ROLE_KEYWORDS[role] || [role.toLowerCase()];
     const hay = [job.title, ...(job.tags || []), job.level]
       .join(" ")
       .toLowerCase();
     return keywords.some((k) => hay.includes(k));
+  }
+
+  function matchesRoles(job) {
+    if (!state.roles.size) return true;
+    for (const role of state.roles) {
+      if (matchesSingleRole(job, role)) return true;
+    }
+    return false;
   }
 
   function matchesLocation(job, location) {
@@ -55,6 +76,23 @@
     return keys.some((k) => hay.includes(k.trim()));
   }
 
+  function matchesDateRange(job) {
+    if (!state.dateFrom && !state.dateTo) return true;
+    const posted = new Date(job.postedAt).getTime();
+    if (Number.isNaN(posted)) return false;
+    if (state.dateFrom) {
+      const from = new Date(state.dateFrom);
+      from.setHours(0, 0, 0, 0);
+      if (posted < from.getTime()) return false;
+    }
+    if (state.dateTo) {
+      const to = new Date(state.dateTo);
+      to.setHours(23, 59, 59, 999);
+      if (posted > to.getTime()) return false;
+    }
+    return true;
+  }
+
   function matches(job) {
     const q = state.search.trim().toLowerCase();
     if (q) {
@@ -71,7 +109,6 @@
       if (!hay.includes(q)) return false;
     }
 
-    // Exclude only when we know salary is below the filter; keep unknown salaries
     if (
       state.salaryMin > 40000 &&
       job.salaryMin &&
@@ -80,7 +117,7 @@
       return false;
     }
 
-    if (!matchesRole(job, state.role)) return false;
+    if (!matchesRoles(job)) return false;
 
     if (state.level) {
       const jobLevel = String(job.level || "").toLowerCase();
@@ -88,6 +125,8 @@
     }
 
     if (!matchesLocation(job, state.location)) return false;
+
+    if (!matchesDateRange(job)) return false;
 
     if (state.tags.size) {
       const jobTags = new Set(
@@ -117,48 +156,58 @@
       });
   }
 
+  function pageItems(list) {
+    return state.sourceFilter === "partner"
+      ? list
+      : list.filter((j) => !j.featured);
+  }
+
   function setFiltering(on) {
     document.getElementById("job-results")?.classList.toggle("is-filtering", on);
   }
 
-  function render() {
+  function resetPagination() {
+    state.loadedCount = PAGE_SIZE;
+    renderedCount = 0;
+  }
+
+  function updateScrollSentinel(hasMore) {
+    const sentinel = document.getElementById("scroll-sentinel");
+    const loadingEl = document.getElementById("scroll-loading");
+    if (sentinel) {
+      sentinel.classList.toggle("hidden", !hasMore);
+      if (hasMore && scrollObserver) scrollObserver.observe(sentinel);
+      else if (scrollObserver) scrollObserver.unobserve(sentinel);
+    }
+    loadingEl?.classList.add("hidden");
+  }
+
+  function render({ reset = true } = {}) {
     setFiltering(true);
     requestAnimationFrame(() => {
       const list = filtered();
       const featuredEl = document.getElementById("featured-jobs");
       const resultsEl = document.getElementById("job-results");
       const countEls = document.querySelectorAll("[data-results-count]");
-      const paginationEl = document.getElementById("pagination");
       const emptyEl = document.getElementById("empty-state");
       const partnerEl = document.getElementById("partner-jobs");
 
       const featured = list.filter((j) => j.featured);
 
       if (featuredEl) {
-        if (
-          featured.length &&
-          state.sourceFilter !== "partner" &&
-          state.page === 1
-        ) {
+        if (featured.length && state.sourceFilter !== "partner" && reset) {
           featuredEl.classList.remove("hidden");
           featuredEl.querySelector("[data-featured-list]").innerHTML = featured
             .map((j) => window.RDJobs.jobCardHTML(j, { animate: true }))
             .join("");
-        } else {
+        } else if (reset) {
           featuredEl.classList.add("hidden");
         }
       }
 
-      const pageItems =
-        state.sourceFilter === "partner"
-          ? list
-          : list.filter((j) => !j.featured);
-
-      const totalPages = Math.max(1, Math.ceil(pageItems.length / PAGE_SIZE));
-      if (state.page > totalPages) state.page = totalPages;
-
-      const start = (state.page - 1) * PAGE_SIZE;
-      const pageSlice = pageItems.slice(start, start + PAGE_SIZE);
+      const items = pageItems(list);
+      const visible = items.slice(0, state.loadedCount);
+      const hasMore = visible.length < items.length;
 
       const countText = `${list.length} job${list.length === 1 ? "" : "s"}`;
       countEls.forEach((el) => {
@@ -166,40 +215,33 @@
       });
 
       if (resultsEl) {
-        if (pageSlice.length === 0 && featured.length === 0) {
+        if (items.length === 0 && featured.length === 0) {
           resultsEl.innerHTML = "";
+          renderedCount = 0;
           emptyEl?.classList.remove("hidden");
         } else {
           emptyEl?.classList.add("hidden");
-          resultsEl.innerHTML = pageSlice
-            .map((j) => window.RDJobs.jobCardHTML(j, { animate: true }))
-            .join("");
-        }
-      }
-
-      if (paginationEl) {
-        if (pageItems.length <= PAGE_SIZE) {
-          paginationEl.innerHTML = "";
-        } else {
-          let html = `<div class="flex flex-wrap items-center justify-center gap-2 mt-8">`;
-          html += `<button type="button" class="btn-secondary py-2 px-3 text-sm" data-page="prev" ${
-            state.page <= 1 ? "disabled" : ""
-          }>Previous</button>`;
-          for (let i = 1; i <= totalPages; i++) {
-            const active =
-              i === state.page
-                ? "!border-[var(--rd-primary)] bg-blue-500/15 text-[var(--rd-primary)]"
-                : "";
-            html += `<button type="button" class="btn-secondary py-2 px-3 text-sm ${active}" data-page="${i}">${i}</button>`;
+          if (reset) {
+            resultsEl.innerHTML = visible
+              .map((j) => window.RDJobs.jobCardHTML(j, { animate: true }))
+              .join("");
+            renderedCount = visible.length;
+          } else {
+            const newItems = visible.slice(renderedCount);
+            resultsEl.insertAdjacentHTML(
+              "beforeend",
+              newItems
+                .map((j) => window.RDJobs.jobCardHTML(j, { animate: true }))
+                .join(""),
+            );
+            renderedCount = visible.length;
           }
-          html += `<button type="button" class="btn-secondary py-2 px-3 text-sm" data-page="next" ${
-            state.page >= totalPages ? "disabled" : ""
-          }>Next</button></div>`;
-          paginationEl.innerHTML = html;
         }
       }
 
-      if (partnerEl) {
+      updateScrollSentinel(hasMore);
+
+      if (partnerEl && reset) {
         const partners = allJobs()
           .filter((j) => j.source === "partner")
           .slice(0, 6);
@@ -212,10 +254,33 @@
     });
   }
 
-  function syncRadioGroup(selector, value, attr) {
+  function loadMore() {
+    const items = pageItems(filtered());
+    if (state.loadedCount >= items.length) return;
+    const loadingEl = document.getElementById("scroll-loading");
+    loadingEl?.classList.remove("hidden");
+    state.loadedCount += PAGE_SIZE;
+    render({ reset: false });
+  }
+
+  function bindInfiniteScroll() {
+    const sentinel = document.getElementById("scroll-sentinel");
+    if (!sentinel) return;
+
+    scrollObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) loadMore();
+      },
+      { rootMargin: "240px", threshold: 0 },
+    );
+
+    scrollObserver.observe(sentinel);
+  }
+
+  function syncChipGroup(selector, selectedSet, attr) {
     document.querySelectorAll(selector).forEach((btn) => {
       const v = btn.getAttribute(attr) || "";
-      btn.setAttribute("aria-checked", String(v === value));
+      btn.setAttribute("aria-pressed", String(selectedSet.has(v)));
     });
   }
 
@@ -226,10 +291,17 @@
       const search = document.getElementById("filter-search");
       if (search) search.value = state.search;
     }
-    if (params.has("role")) {
-      state.role = params.get("role") || "";
-      syncRadioGroup("[data-filter-role]", state.role, "data-filter-role");
+    const roleParam = params.getAll("role");
+    if (roleParam.length) {
+      roleParam.forEach((r) => {
+        if (r) state.roles.add(r);
+      });
+    } else if (params.has("role")) {
+      const r = params.get("role");
+      if (r) state.roles.add(r);
     }
+    syncChipGroup("[data-filter-role]", state.roles, "data-filter-role");
+
     if (params.has("level")) {
       state.level = params.get("level") || "";
       syncRadioGroup(
@@ -250,19 +322,38 @@
         salaryLabel.textContent = `$${Math.round(state.salaryMin / 1000)}k+`;
       }
     }
-    if (params.has("tag")) {
-      state.tags.add(params.get("tag"));
+    params.getAll("tag").forEach((t) => {
+      if (t) state.tags.add(t);
+    });
+    if (params.has("from")) {
+      state.dateFrom = params.get("from") || "";
+      const fromEl = document.getElementById("filter-date-from");
+      if (fromEl) fromEl.value = state.dateFrom;
     }
+    if (params.has("to")) {
+      state.dateTo = params.get("to") || "";
+      const toEl = document.getElementById("filter-date-to");
+      if (toEl) toEl.value = state.dateTo;
+    }
+  }
+
+  function syncRadioGroup(selector, value, attr) {
+    document.querySelectorAll(selector).forEach((btn) => {
+      const v = btn.getAttribute(attr) || "";
+      btn.setAttribute("aria-checked", String(v === value));
+    });
   }
 
   function bindFilters() {
     const search = document.getElementById("filter-search");
     const salary = document.getElementById("filter-salary");
     const salaryLabel = document.getElementById("salary-label");
+    const dateFrom = document.getElementById("filter-date-from");
+    const dateTo = document.getElementById("filter-date-to");
 
     search?.addEventListener("input", (e) => {
       state.search = e.target.value;
-      state.page = 1;
+      resetPagination();
       render();
     });
 
@@ -271,17 +362,20 @@
       if (salaryLabel) {
         salaryLabel.textContent = `$${Math.round(state.salaryMin / 1000)}k+`;
       }
-      state.page = 1;
+      resetPagination();
       render();
     });
 
-    document.querySelectorAll("[data-filter-role]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        state.role = btn.getAttribute("data-filter-role") || "";
-        syncRadioGroup("[data-filter-role]", state.role, "data-filter-role");
-        state.page = 1;
-        render();
-      });
+    dateFrom?.addEventListener("change", (e) => {
+      state.dateFrom = e.target.value;
+      resetPagination();
+      render();
+    });
+
+    dateTo?.addEventListener("change", (e) => {
+      state.dateTo = e.target.value;
+      resetPagination();
+      render();
     });
 
     document.querySelectorAll("[data-filter-level-radio]").forEach((btn) => {
@@ -292,7 +386,7 @@
           state.level,
           "data-filter-level-radio",
         );
-        state.page = 1;
+        resetPagination();
         render();
       });
     });
@@ -303,7 +397,7 @@
         document.querySelectorAll("[data-source-filter]").forEach((b) => {
           b.setAttribute("aria-pressed", String(b === btn));
         });
-        state.page = 1;
+        resetPagination();
         render();
       });
     });
@@ -311,16 +405,20 @@
     document.getElementById("clear-filters")?.addEventListener("click", () => {
       state.search = "";
       state.salaryMin = 40000;
-      state.role = "";
+      state.roles.clear();
       state.level = "";
       state.location = "";
       state.tags.clear();
+      state.dateFrom = "";
+      state.dateTo = "";
       state.sourceFilter = "all";
-      state.page = 1;
+      resetPagination();
       if (search) search.value = "";
       if (salary) salary.value = "40000";
       if (salaryLabel) salaryLabel.textContent = "$40k+";
-      syncRadioGroup("[data-filter-role]", "", "data-filter-role");
+      if (dateFrom) dateFrom.value = "";
+      if (dateTo) dateTo.value = "";
+      syncChipGroup("[data-filter-role]", state.roles, "data-filter-role");
       syncRadioGroup("[data-filter-level-radio]", "", "data-filter-level-radio");
       document.querySelectorAll("[data-filter-tag]").forEach((el) => {
         el.setAttribute("aria-pressed", "false");
@@ -332,24 +430,6 @@
         );
       });
       render();
-    });
-
-    document.getElementById("pagination")?.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-page]");
-      if (!btn || btn.disabled) return;
-      const val = btn.getAttribute("data-page");
-      const list = filtered().filter(
-        (j) => state.sourceFilter === "partner" || !j.featured,
-      );
-      const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
-      if (val === "prev") state.page = Math.max(1, state.page - 1);
-      else if (val === "next")
-        state.page = Math.min(totalPages, state.page + 1);
-      else state.page = Number(val);
-      render();
-      document
-        .getElementById("job-results")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     const drawer = document.getElementById("filter-sidebar");
@@ -364,6 +444,25 @@
     };
     document.getElementById("close-filters")?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
+  }
+
+  function renderRoleFilters() {
+    const el = document.getElementById("role-filters");
+    if (!el) return;
+    el.innerHTML = ROLE_OPTIONS.map(
+      (role) =>
+        `<button type="button" class="tag-chip cursor-pointer" data-filter-role="${window.RDJobs.escapeAttr(role)}" aria-pressed="${state.roles.has(role) ? "true" : "false"}">${window.RDJobs.escapeHtml(role)}</button>`,
+    ).join("");
+    el.querySelectorAll("[data-filter-role]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const val = btn.getAttribute("data-filter-role");
+        if (state.roles.has(val)) state.roles.delete(val);
+        else state.roles.add(val);
+        btn.setAttribute("aria-pressed", String(state.roles.has(val)));
+        resetPagination();
+        render();
+      });
+    });
   }
 
   function renderTagFilters() {
@@ -385,7 +484,7 @@
         if (state.tags.has(val)) state.tags.delete(val);
         else state.tags.add(val);
         btn.setAttribute("aria-pressed", String(state.tags.has(val)));
-        state.page = 1;
+        resetPagination();
         render();
       });
     });
@@ -402,8 +501,10 @@
     }
 
     applyUrlParams();
+    renderRoleFilters();
     renderTagFilters();
     bindFilters();
+    bindInfiniteScroll();
     render();
 
     try {

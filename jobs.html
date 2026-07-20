@@ -57,6 +57,7 @@
       };
     </script>
     <link rel="stylesheet" href="/css/styles.css" />
+    <meta name="google-adsense-account" content="ca-pub-1570747115569078">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1570747115569078"
      crossorigin="anonymous"></script>
   </head>
@@ -120,14 +121,21 @@
           <div class="surface-panel p-5 space-y-7 lg:sticky lg:top-24">
             <div>
               <p class="form-label">Role</p>
-              <div class="space-y-0.5" role="radiogroup" aria-label="Role">
-                <button type="button" class="filter-radio" data-filter-role="" aria-checked="true">All roles</button>
-                <button type="button" class="filter-radio" data-filter-role="Frontend" aria-checked="false">Frontend</button>
-                <button type="button" class="filter-radio" data-filter-role="Backend" aria-checked="false">Backend</button>
-                <button type="button" class="filter-radio" data-filter-role="Full Stack" aria-checked="false">Full Stack</button>
-                <button type="button" class="filter-radio" data-filter-role="DevOps" aria-checked="false">DevOps</button>
-                <button type="button" class="filter-radio" data-filter-role="AI" aria-checked="false">AI</button>
-                <button type="button" class="filter-radio" data-filter-role="Data" aria-checked="false">Data</button>
+              <p class="text-xs text-muted mb-2">Select one or more</p>
+              <div id="role-filters" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div>
+              <p class="form-label">Posted date</p>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="text-xs text-muted mb-1 block" for="filter-date-from">From</label>
+                  <input id="filter-date-from" type="date" class="form-input !py-2 !text-sm" />
+                </div>
+                <div>
+                  <label class="text-xs text-muted mb-1 block" for="filter-date-to">To</label>
+                  <input id="filter-date-to" type="date" class="form-input !py-2 !text-sm" />
+                </div>
               </div>
             </div>
 
@@ -162,6 +170,7 @@
 
             <div>
               <p class="form-label">Tech stack</p>
+              <p class="text-xs text-muted mb-2">Select one or more</p>
               <div id="tag-filters" class="flex flex-wrap gap-2"></div>
             </div>
 
@@ -202,7 +211,10 @@
                 Try clearing filters or broadening your search.
               </p>
             </div>
-            <div id="pagination"></div>
+            <div id="scroll-sentinel" class="h-8" aria-hidden="true"></div>
+            <p id="scroll-loading" class="hidden text-center text-sm text-muted py-6">
+              Loading more jobs…
+            </p>
           </section>
 
           <section class="mt-16 pt-12 border-t border-[var(--rd-border)]">
