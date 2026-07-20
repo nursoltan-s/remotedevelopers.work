@@ -1,5 +1,7 @@
 /**
- * Job detail page — load by ?id=, then re-fetch full description via API.
+ * Job detail page — legacy /job.html?id=…
+ * Redirects to the static /jobs/<slug>.html page when available;
+ * otherwise renders the listing (including live partner API jobs).
  */
 (function () {
   function getId() {
@@ -23,6 +25,20 @@
       return window.RDJobsAPI.findJobById(id);
     }
     return (window.RD_JOBS || []).find((j) => String(j.id) === String(id));
+  }
+
+  function slugUrl(job) {
+    if (!job?.slug) return null;
+    // Use .html so local static servers resolve the file; CF Pages accepts both.
+    return `/jobs/${encodeURIComponent(job.slug)}.html`;
+  }
+
+  /** Prefer the indexable static page when we already know the slug. */
+  function maybeRedirectToStatic(job) {
+    const url = slugUrl(job);
+    if (!url) return false;
+    window.location.replace(url);
+    return true;
   }
 
   function renderLoading(msg) {
@@ -99,7 +115,7 @@
             <p class="text-muted mt-2 text-lg">${escapeHtml(job.company)}</p>
             ${partner}
             <div class="flex flex-wrap items-center gap-2 mt-4">
-              <span class="badge-remote">🌍 Remote</span>
+              <span class="badge-remote">Remote</span>
               ${salary}
               <span class="tag-chip">${escapeHtml(job.type || "")}</span>
               <span class="tag-chip">${escapeHtml(job.level || "")}</span>
@@ -169,14 +185,16 @@
       return;
     }
 
+    // Fast path: static curated/synced job with a slug → SEO page
+    const cached = findJob(id);
+    if (cached && maybeRedirectToStatic(cached)) return;
+
     renderLoading("Loading job…");
 
-    // Fast paint from cache / curated
-    let job = findJob(id);
+    let job = cached;
     if (job) renderJob(job);
     else renderLoading("Fetching job from partner API…");
 
-    // Ensure list is warm, then re-fetch this jobId for full description
     try {
       if (window.RDJobsAPI?.loadRemoteJobs) {
         await window.RDJobsAPI.loadRemoteJobs();
@@ -197,6 +215,7 @@
       job = findJob(id);
     }
 
+    if (job && maybeRedirectToStatic(job)) return;
     if (job) renderJob(job);
     else renderNotFound();
   });

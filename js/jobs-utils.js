@@ -71,9 +71,12 @@ window.RDJobs = (function () {
   }
 
   function jobDetailUrl(job) {
-    if (job?.slug) return `/jobs/${encodeURIComponent(job.slug)}`;
+    if (job?.slug) {
+      // .html so local static servers resolve the file; Cloudflare Pages serves both.
+      return `/jobs/${encodeURIComponent(job.slug)}.html`;
+    }
     const id = encodeURIComponent(String(job?.id ?? ""));
-    // Legacy fallback for jobs without a slug (pre-generation / ephemeral API rows)
+    // Legacy / live API jobs without a generated static page
     return `/job.html?id=${id}#${id}`;
   }
 
